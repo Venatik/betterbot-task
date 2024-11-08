@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
 
     <div class="products-grid">
         @for (product of products(); track product.id) {
@@ -10,6 +10,30 @@
             <mat-card-content>
                 <button mat-button><mat-icon aria-hidden="false"
                         fontIcon="star"></mat-icon>{{product.rating.rate}}</button>
+                <p class="price">{{ product.price | currency: 'USD' : 'symbol': '1.0-0' }}</p>
+            </mat-card-content>
+            <button mat-flat-button>Add to Cart</button>
+        </mat-card>
+        }
+    </div>
+</div> -->
+
+<div class="container">
+    <div class="products-grid">
+        @for (product of products(); track product.id) {
+        <mat-card class="product-card">
+            <div class="image-container">
+                <img mat-card-image [src]="product.image" [alt]="product.title">
+                <span class="discount-badge">-{{discount}}%</span>
+            </div>
+            <mat-card-header>
+                <mat-card-title>{{ product.title }}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <button mat-button>
+                    <mat-icon aria-hidden="false" fontIcon="star"></mat-icon>
+                    {{product.rating.rate}}
+                </button>
                 <p class="price">{{ product.price | currency: 'USD' : 'symbol': '1.0-0' }}</p>
             </mat-card-content>
             <button mat-flat-button>Add to Cart</button>

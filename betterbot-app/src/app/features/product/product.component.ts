@@ -5,6 +5,7 @@ import { ProductsService } from "../../core/services/products.service";
 import { MatCardModule } from "@angular/material/card";
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
+import { MatBadgeModule } from "@angular/material/badge";
 
 @Component({
   selector: "app-product",
@@ -15,19 +16,20 @@ import { MatIconModule } from "@angular/material/icon";
     MatCardModule,
     MatButtonModule,
     MatIconModule,
+    MatBadgeModule,
   ],
   templateUrl: "./product.component.html",
   styleUrl: "./product.component.scss",
 })
 export class ProductComponent {
-  // product = input.required<Product>();
-
   private productsService = inject(ProductsService);
 
   products = signal<Product[]>([]);
+  discount: number = 0;
 
   ngOnInit() {
     this.getProducts();
+    // this.generateDiscount();
   }
 
   getProducts() {
@@ -40,4 +42,8 @@ export class ProductComponent {
       },
     });
   }
+
+  // generateDiscount() {
+  //   this.discount = Math.floor(Math.random() * (70 - 5 + 1)) + 5;
+  // }
 }

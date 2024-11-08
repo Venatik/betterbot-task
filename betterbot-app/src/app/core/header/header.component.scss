@@ -5,7 +5,12 @@
   align-items: center;
   justify-content: space-evenly;
   padding: 10px 5%;
-  min-height: 55px;
+  min-height: 35px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  box-sizing: border-box;
 
   .nav {
     display: flex;
