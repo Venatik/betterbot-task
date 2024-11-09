@@ -51,7 +51,6 @@ export class CheckoutComponent {
     if (this.formData.country === Countries.UnitedStates) {
       this.stateDropdownEnabled = true;
       this.availableStates = Object.values(USStates);
-      console.log("Available States", this.availableStates);
     } else {
       this.stateDropdownEnabled = false;
       this.availableStates = [];
@@ -61,6 +60,15 @@ export class CheckoutComponent {
   onSubmit() {
     if (this.checkoutForm.valid) {
       console.log("Checkout Form Submitted!");
+      console.log("Form Data:", {
+        Name: this.formData.name,
+        Email: this.formData.email,
+        Phone: this.formData.phone,
+        Address: this.formData.address,
+        Country: this.formData.country,
+        State: this.formData.state,
+        Notes: this.formData.notes,
+      });
     } else {
       this.markFormGroupTouched(this.checkoutForm);
     }

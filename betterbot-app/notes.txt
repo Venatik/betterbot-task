@@ -4,6 +4,7 @@ TO DO:
 
 
 TO FIX:
+- CSS on buttons in Cart
 
 
 NOTES:
