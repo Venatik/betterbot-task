@@ -1,17 +1,22 @@
 <header class="header">
   <nav class="nav">
-    <div class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{
-            exact: true,
-          }">
-      Home
+    <div class="nav-links">
+      <div class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{
+      exact: true,
+    }">
+        Home
+      </div>
+      <div class="nav-link" routerLink="/cart" routerLinkActive="active" [routerLinkActiveOptions]="{
+      exact: true,
+    }">
+        Cart
+      </div>
     </div>
-    <div class="nav-link" routerLink="/cart" routerLinkActive="active" [routerLinkActiveOptions]="{
-            exact: true,
-          }">
-      Cart
-    </div>
-    <!-- <div class="nav-icons">
 
-    </div> -->
+    <div class="nav-icons">
+      <mat-icon aria-hidden="false">email</mat-icon>
+      <mat-icon aria-hidden="false">login</mat-icon>
+      <mat-icon aria-hidden="false">settings</mat-icon>
+    </div>
   </nav>
 </header>

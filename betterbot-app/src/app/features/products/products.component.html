@@ -1,11 +1,10 @@
-<app-product />
+<!-- <app-product /> -->
 
-<!-- <mat-grid-list [cols]="breakpoint" rowHeight="2:3" gutterSize="10px" class="grid-container">
-    @if(!products().length) {
-    <p>No Cars Found!</p>
-    }
-
-    @for (product of products(); track product.id) {
-    <mat-grid-tile><app-product [product]="product" /></mat-grid-tile>
-    }
-</mat-grid-list> -->
+<div class="container">
+    <div class="products-grid">
+        @for (product of products(); track product.id) {
+        <app-product [product]="product" (addToCart)="addToCart($event)">
+        </app-product>
+        }
+    </div>
+</div>

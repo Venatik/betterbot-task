@@ -1,4 +1,12 @@
-import { Component, inject, input, signal } from "@angular/core";
+import {
+  Component,
+  EventEmitter,
+  inject,
+  Input,
+  input,
+  Output,
+  signal,
+} from "@angular/core";
 import { Product } from "../../types/product.interface";
 import { CommonModule, CurrencyPipe } from "@angular/common";
 import { ProductsService } from "../../core/services/products.service";
@@ -22,10 +30,12 @@ import { MatBadgeModule } from "@angular/material/badge";
   styleUrl: "./product.component.scss",
 })
 export class ProductComponent {
-  private productsService = inject(ProductsService);
-
   products = signal<Product[]>([]);
   discount: number = 0;
+  @Input() product!: Product;
+  @Output() addToCart = new EventEmitter<Product>();
+
+  private productsService = inject(ProductsService);
 
   ngOnInit() {
     this.getProducts();
@@ -41,6 +51,11 @@ export class ProductComponent {
         console.log(err);
       },
     });
+  }
+
+  onAddToCart() {
+    console.log("1. Product Component - Button Clicked");
+    this.addToCart.emit(this.product);
   }
 
   // generateDiscount() {
