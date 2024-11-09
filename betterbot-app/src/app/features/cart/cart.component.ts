@@ -4,11 +4,12 @@ import { CartService } from "../../core/services/cart.service";
 import { CurrencyPipe } from "@angular/common";
 import { Product } from "../../types/product.interface";
 import { MatIconModule } from "@angular/material/icon";
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: "app-cart",
   standalone: true,
-  imports: [MatTableModule, CurrencyPipe, MatIconModule],
+  imports: [MatTableModule, CurrencyPipe, MatIconModule, RouterLink],
   templateUrl: "./cart.component.html",
   styleUrl: "./cart.component.scss",
 })

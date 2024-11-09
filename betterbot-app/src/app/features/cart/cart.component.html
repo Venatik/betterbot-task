@@ -1,32 +1,47 @@
 <div class="cart-container">
-    <mat-table [dataSource]="cartItems()">
-        <ng-container matColumnDef="image">
-            <mat-header-cell *matHeaderCellDef>Image</mat-header-cell>
-            <mat-cell *matCellDef="let item">
-                <img [src]="item.image" [alt]="item.title" style="max-height: 50px; max-width: 50px;">
-            </mat-cell>
-        </ng-container>
-        <ng-container matColumnDef="name">
-            <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
-            <mat-cell *matCellDef="let item">{{item.title}}</mat-cell>
-        </ng-container>
-        <ng-container matColumnDef="price">
-            <mat-header-cell *matHeaderCellDef>Price</mat-header-cell>
-            <mat-cell *matCellDef="let item">{{item.price | currency:'USD':'symbol':'1.0-2'}}</mat-cell>
-        </ng-container>
+    <div class="table-container">
+        <mat-table [dataSource]="cartItems()">
+            <ng-container matColumnDef="image">
+                <mat-header-cell *matHeaderCellDef>Product</mat-header-cell>
+                <mat-cell *matCellDef="let item">
+                    <img [src]="item.image" [alt]="item.title" style="max-height: 50px; max-width: 50px;">
+                </mat-cell>
+            </ng-container>
 
-        <ng-container matColumnDef="delete">
-            <mat-header-cell *matHeaderCellDef></mat-header-cell>
-            <mat-cell *matCellDef="let item">
-                <button mat-icon-button (click)="removeItem(item)">
-                    <mat-icon>delete</mat-icon>
-                </button>
-            </mat-cell>
-        </ng-container>
+            <ng-container matColumnDef="name">
+                <mat-header-cell *matHeaderCellDef>Product Desc.</mat-header-cell>
+                <mat-cell *matCellDef="let item">{{item.title}}</mat-cell>
+            </ng-container>
 
-        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-    </mat-table>
+            <ng-container matColumnDef="price">
+                <mat-header-cell *matHeaderCellDef>Price</mat-header-cell>
+                <mat-cell *matCellDef="let item">{{item.price | currency:'USD':'symbol':'1.0-2'}}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="delete">
+                <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                <mat-cell *matCellDef="let item">
+                    <button mat-icon-button (click)="removeItem(item)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+
+        <div class="table-actions">
+            <button mat-stroked-button color="primary" routerLink="/">
+                <mat-icon>arrow_back</mat-icon>
+                Continue Shopping
+            </button>
+            <button mat-flat-button color="primary" routerLink="/checkout">
+                <mat-icon>shopping_cart</mat-icon>
+                Checkout
+            </button>
+        </div>
+    </div>
 
     <div class="order-summary">
         <h2>Order Summary</h2>
@@ -45,4 +60,3 @@
             </div>
         </div>
     </div>
-</div>

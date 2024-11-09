@@ -39,7 +39,6 @@ export class ProductComponent {
 
   ngOnInit() {
     this.getProducts();
-    // this.generateDiscount();
   }
 
   getProducts() {
@@ -56,8 +55,4 @@ export class ProductComponent {
   onAddToCart() {
     this.addToCart.emit(this.product);
   }
-
-  // generateDiscount() {
-  //   this.discount = Math.floor(Math.random() * (70 - 5 + 1)) + 5;
-  // }
 }
