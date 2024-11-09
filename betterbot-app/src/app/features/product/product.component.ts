@@ -54,7 +54,6 @@ export class ProductComponent {
   }
 
   onAddToCart() {
-    console.log("1. Product Component - Button Clicked");
     this.addToCart.emit(this.product);
   }
 

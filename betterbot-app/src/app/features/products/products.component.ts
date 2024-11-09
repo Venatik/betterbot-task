@@ -36,7 +36,6 @@ export class ProductsComponent {
   }
 
   addToCart(product: Product) {
-    console.log("2. Products Component - Received", product);
     this.cartService.addToCart(product);
   }
 }

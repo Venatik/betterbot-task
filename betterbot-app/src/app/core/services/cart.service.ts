@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, signal } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { Product } from "../../types/product.interface";
 
@@ -6,17 +6,20 @@ import { Product } from "../../types/product.interface";
   providedIn: "root",
 })
 export class CartService {
-  private cartItems = new BehaviorSubject<Product[]>([]);
-
-  constructor() {}
+  private cartItems = signal<Product[]>([]);
 
   addToCart(product: Product) {
-    const currentItems = this.cartItems.getValue();
+    const currentItems = this.cartItems();
+    this.cartItems.set([...currentItems, product]);
+  }
 
-    this.cartItems.next([...currentItems, product]);
+  removeFromCart(product: Product) {
+    const currentItems = this.cartItems();
+    const updatedItems = currentItems.filter(item => item !== product);
+    this.cartItems.set(updatedItems);
   }
 
   getCartItems() {
-    return this.cartItems.asObservable();
+    return this.cartItems;
   }
 }
