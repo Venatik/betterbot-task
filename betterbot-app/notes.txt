@@ -1,10 +1,10 @@
 TO DO:
 - Collapsible top menu
-- Add Cart + Summary (make responsive, move summary to bottom at certain width)
-    - Use forms for cart
-- Add Checkout Page
-- Add not-found + route + link to Home
 - Generate discount for each item
 
 
 TO FIX:
+
+
+NOTES:
+- Continue shopping and Checkout moved out of form for ease of use

@@ -1,0 +1,165 @@
+.checkout-container {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 5px;
+
+  h2 {
+    margin-bottom: 24px;
+  }
+
+  h3 {
+    margin-bottom: 24px;
+    color: gray;
+  }
+}
+
+.checkout-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  .form-field {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+
+    label {
+      font-weight: 500;
+      color: black;
+      min-width: 150px;
+      text-align: left;
+    }
+
+    mat-form-field {
+      flex: 1;
+      max-width: 600px;
+    }
+
+    .form-select {
+      flex: 1;
+      max-width: 600px;
+      height: 56px;
+      padding: 0 16px;
+      border: 1px solid var(--blue);
+      border-radius: 4px;
+      background-color: white;
+      font-size: 16px;
+      color: black;
+
+      &:disabled {
+        background-color: gray;
+        cursor: not-allowed;
+      }
+
+      &:focus {
+        outline: none;
+        border-color: var(--blue);
+      }
+    }
+
+    .error-message {
+      color: red;
+      font-size: 12px;
+      margin-top: 4px;
+      margin-left: 166px;
+    }
+  }
+}
+
+.checkout-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 24px;
+
+  button:first-child {
+    border: none;
+    color: gray;
+  }
+
+  button:last-child {
+    background-color: lightgreen;
+    padding: 5px;
+    border-radius: 5px;
+    color: white;
+    width: 200px;
+  }
+}
+
+::ng-deep {
+  .mat-mdc-form-field {
+    .mat-mdc-text-field-wrapper {
+      height: 65px;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .mat-mdc-form-field-flex {
+      padding: 0 12px;
+      height: 100%;
+      align-items: center;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: #cccccc !important;
+    }
+
+    .mdc-notched-outline__leading,
+    .mdc-notched-outline__notch,
+    .mdc-notched-outline__trailing {
+      border-color: var(--light-blue) !important;
+    }
+
+    &:hover {
+      .mdc-notched-outline__leading,
+      .mdc-notched-outline__notch,
+      .mdc-notched-outline__trailing {
+        border-color: var(--blue) !important;
+      }
+    }
+
+    .mat-mdc-form-field-infix {
+      padding: 0;
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .checkout-container {
+    padding: 16px;
+  }
+
+  .checkout-form {
+    .form-field {
+      flex-direction: column;
+      align-items: flex-start;
+
+      label {
+        min-width: unset;
+        text-align: left;
+      }
+
+      mat-form-field,
+      .form-select {
+        width: 100%;
+        max-width: none;
+      }
+
+      .error-message {
+        margin-left: 0;
+      }
+    }
+
+    button {
+      margin-left: 0;
+      width: 100%;
+    }
+  }
+}

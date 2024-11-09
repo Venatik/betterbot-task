@@ -44,7 +44,6 @@ export class ProductsComponent {
 
   ngOnInit() {
     this.getProducts();
-    // this.getCategories();
   }
 
   getProducts() {
