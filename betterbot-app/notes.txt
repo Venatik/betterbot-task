@@ -6,4 +6,3 @@ TO DO:
 TO FIX:
 
 NOTES:
-- Continue shopping and Checkout moved out of form for ease of use

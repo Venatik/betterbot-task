@@ -96,3 +96,4 @@ Filtered products state for search and category filtering.
 
 - Light/Dark mode toggle
 - Loading spinner (network throttle to see it in action)
+- Persistent search and category filter
