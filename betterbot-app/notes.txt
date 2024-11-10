@@ -1,7 +1,7 @@
 TO DO:
-- Collapsible top menu
-- Generate discount for each item
-- Add paginator
+- Collapsible top menu?
+- Generate discount for each item?
+- Add paginator?
 
 TO FIX:
 
