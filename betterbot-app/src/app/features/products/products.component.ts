@@ -12,14 +12,9 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatInputModule } from "@angular/material/input";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { finalize } from "rxjs";
-import {
-  animate,
-  query,
-  stagger,
-  style,
-  transition,
-  trigger,
-} from "@angular/animations";
+import { animate, style, transition, trigger } from "@angular/animations";
+import { FilterService } from "../../core/services/filter.service";
+import { CapitalizePipe } from "../../shared/pipes/capitalize.pipe";
 
 @Component({
   selector: "app-products",
@@ -43,6 +38,7 @@ import {
     MatInputModule,
     FormsModule,
     MatProgressSpinnerModule,
+    CapitalizePipe,
   ],
   templateUrl: "./products.component.html",
   styleUrl: "./products.component.scss",
@@ -50,20 +46,32 @@ import {
 export class ProductsComponent {
   private productsService = inject(ProductsService);
   private cartService = inject(CartService);
+  private filterService = inject(FilterService);
 
   loading = signal(false);
   products = signal<Product[]>([]);
   filteredProducts = signal<Product[]>([]);
   categories = signal<string[]>([]);
 
-  searchControl: FormControl = new FormControl("");
-  categoryControl: FormControl = new FormControl("");
-  selectedCategory: string = "";
-
-  breakpoint: number = 0;
+  searchControl: FormControl = new FormControl(
+    this.filterService.getSearchFilter()()
+  );
+  selectedCategory: string = this.filterService.getCategoryFilter()() || "";
 
   ngOnInit() {
     this.getProducts();
+    this.getCategories();
+
+    this.searchControl.valueChanges.subscribe(value => {
+      this.filterService.setSearchFilter(value || "");
+      this.filterProducts();
+    });
+  }
+
+  onCategoryChange(value: string) {
+    this.selectedCategory = value;
+    this.filterService.setCategoryFilter(value);
+    this.filterProducts();
   }
 
   getProducts() {
@@ -75,6 +83,7 @@ export class ProductsComponent {
         next: value => {
           this.products.set(value);
           this.filteredProducts.set(value);
+          this.filterProducts();
         },
         error: err => {
           console.log(err);

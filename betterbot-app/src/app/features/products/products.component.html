@@ -5,12 +5,11 @@
             <mat-icon matPrefix>search</mat-icon>
         </mat-form-field>
 
-        <select [(ngModel)]="selectedCategory" (change)="filterProducts()" class="category-select">
+        <select [(ngModel)]="selectedCategory" (ngModelChange)="onCategoryChange($event)" class="category-select">
             <option value="">All Categories</option>
-            <option value="electronics">Electronics</option>
-            <option value="jewelery">Jewelery</option>
-            <option value="men's clothing">Men's Clothing</option>
-            <option value="women's clothing">Women's Clothing</option>
+            <option *ngFor="let category of categories()" [value]="category">
+                {{category | capitalize}}
+            </option>
         </select>
     </div>
 
