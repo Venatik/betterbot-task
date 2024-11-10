@@ -17,7 +17,7 @@ import { FilterService } from "../../core/services/filter.service";
 import { CapitalizePipe } from "../../shared/pipes/capitalize.pipe";
 
 @Component({
-  selector: "app-products",
+  selector: "app-home",
   standalone: true,
   animations: [
     trigger("staggerFade", [
@@ -40,10 +40,10 @@ import { CapitalizePipe } from "../../shared/pipes/capitalize.pipe";
     MatProgressSpinnerModule,
     CapitalizePipe,
   ],
-  templateUrl: "./products.component.html",
-  styleUrl: "./products.component.scss",
+  templateUrl: "./home.component.html",
+  styleUrl: "./home.component.scss",
 })
-export class ProductsComponent {
+export class HomeComponent {
   private productsService = inject(ProductsService);
   private cartService = inject(CartService);
   private filterService = inject(FilterService);
