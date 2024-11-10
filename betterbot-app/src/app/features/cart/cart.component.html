@@ -44,6 +44,10 @@
     </div>
 
     <div class="order-summary">
+        <div class="card-image">
+            <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/visa-card-design-template-02d9cc23173cf0e4d50dbbdf7aae1c04_screen.jpg?ts=1718906512"
+                alt="Visa Card" class="visa-card">
+        </div>
         <h2>Order Summary</h2>
         <div class="summary-details">
             <div class="summary-row">
@@ -51,12 +55,16 @@
                 <span>{{calculateTotal(cartItems()) | currency:'USD':'symbol':'1.0-2'}}</span>
             </div>
             <div class="summary-row">
+                <span>Tax (12.5%)</span>
+                <span>{{tax() | currency:'USD':'symbol':'1.0-2'}}</span>
+            </div>
+            <div class="summary-row">
                 <span>Shipping</span>
                 <span>Free</span>
             </div>
             <div class="summary-row total">
                 <span>Total</span>
-                <span>{{calculateTotal(cartItems()) | currency:'USD':'symbol':'1.0-2'}}</span>
+                <span>{{calculateTotalWithTax(cartItems()) | currency:'USD':'symbol':'1.0-2'}}</span>
             </div>
         </div>
     </div>

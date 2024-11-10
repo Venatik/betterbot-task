@@ -10,6 +10,8 @@ import { FormControl, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatSelectModule } from "@angular/material/select";
 import { MatIconModule } from "@angular/material/icon";
 import { MatInputModule } from "@angular/material/input";
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { finalize } from "rxjs";
 
 @Component({
   selector: "app-products",
@@ -24,6 +26,7 @@ import { MatInputModule } from "@angular/material/input";
     MatIconModule,
     MatInputModule,
     FormsModule,
+    MatProgressSpinnerModule,
   ],
   templateUrl: "./products.component.html",
   styleUrl: "./products.component.scss",
@@ -32,6 +35,7 @@ export class ProductsComponent {
   private productsService = inject(ProductsService);
   private cartService = inject(CartService);
 
+  loading = signal(false);
   products = signal<Product[]>([]);
   filteredProducts = signal<Product[]>([]);
   categories = signal<string[]>([]);
@@ -47,15 +51,19 @@ export class ProductsComponent {
   }
 
   getProducts() {
-    this.productsService.getAllProducts().subscribe({
-      next: value => {
-        this.products.set(value);
-        this.filteredProducts.set(value);
-      },
-      error: err => {
-        console.log(err);
-      },
-    });
+    this.loading.set(true);
+    this.productsService
+      .getAllProducts()
+      .pipe(finalize(() => this.loading.set(false)))
+      .subscribe({
+        next: value => {
+          this.products.set(value);
+          this.filteredProducts.set(value);
+        },
+        error: err => {
+          console.log(err);
+        },
+      });
   }
 
   getCategories() {

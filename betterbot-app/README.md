@@ -91,3 +91,8 @@ Filtered products state for search and category filtering.
 ## Contact
 
 - For any questions or feedback, please contact me at: stefan.trajkovski008@gmail.com
+
+## Bonus Features
+
+- Light/Dark mode toggle
+- Loading spinner (network throttle to see it in action)

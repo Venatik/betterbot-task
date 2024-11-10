@@ -117,6 +117,19 @@
     border-radius: 8px;
     height: fit-content;
 
+    .card-image {
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: center;
+
+      .visa-card {
+        width: 500px;
+        height: auto;
+        border-radius: 10px;
+        box-shadow: var(--box-shadow);
+      }
+    }
+
     h2 {
       margin: 0 0 20px 0;
       font-size: 20px;

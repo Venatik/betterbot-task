@@ -1,12 +1,9 @@
 TO DO:
 - Collapsible top menu
 - Generate discount for each item
-- Add Spinner
-
+- Add paginator
 
 TO FIX:
-
-
 
 NOTES:
 - Continue shopping and Checkout moved out of form for ease of use
