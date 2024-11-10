@@ -3,9 +3,9 @@
   height: 400px;
   display: flex;
   flex-direction: column;
-  border: 1px solid white;
+  border: 1px solid var(--input-border);
   border-radius: 5px;
-  background-color: white;
+  background-color: var(--card-bg);
 
   .image-container {
     position: relative;
@@ -20,11 +20,11 @@
       padding: 16px;
       transition: height 0.3s ease;
       max-width: 80%;
+      margin-top: 5px;
       transition: all 0.4s ease-in-out;
-
       &:hover {
-        transform: scale(1.1);
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        transform: scale(1.05);
+        box-shadow: var(--box-shadow);
       }
     }
 
@@ -33,7 +33,7 @@
       top: 16px;
       right: 16px;
       background-color: var(--blue);
-      color: white;
+      color: var(--header-active);
       padding: 4px 8px;
       border-radius: 12px;
       font-size: 14px;
@@ -47,6 +47,7 @@
     mat-card-title {
       font-size: 16px;
       line-height: 1.2;
+      color: var(--text-primary);
     }
   }
 
@@ -61,7 +62,7 @@
     .price {
       font-size: 18px;
       font-weight: bold;
-      color: black;
+      color: var(--text-primary);
       margin: 0;
     }
   }
@@ -71,13 +72,12 @@
     height: 25px;
     margin: 5px auto;
     background-color: var(--blue);
-    color: white;
+    color: var(--header-active);
     border-radius: 10px;
     transition: transform 0.2s ease, box-shadow 0.2 ease;
-
     &:hover {
       transform: scale(1.05);
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      box-shadow: var(--box-shadow);
     }
   }
 
@@ -85,8 +85,8 @@
     width: auto;
     height: 25px;
     margin-top: 5px;
-    background-color: green;
-    color: white;
+    background-color: var(--button-rating-bg);
+    color: var(--header-active);
     border: none;
     border-radius: 10px;
     cursor: default;

@@ -13,14 +13,13 @@
     display: flex;
     justify-content: space-between;
     padding: 20px;
-    border-top: 1px solid rgba(0, 0, 0, 0.12);
+    border-top: 1px solid var(--text-primary);
     margin-top: 16px;
 
     button {
-      min-width: 150px;
-      height: 45px;
+      min-width: 200px;
+      height: 40px;
       font-weight: 500;
-      text-transform: uppercase;
       letter-spacing: 0.5px;
       display: inline-flex;
       align-items: center;
@@ -37,20 +36,18 @@
       }
 
       &[mat-stroked-button] {
-        border: 2px solid var(--blue);
-
+        border: none;
+        cursor: pointer;
         mat-icon {
           color: var(--blue);
-        }
-
-        &:hover {
-          background-color: rgba(0, 0, 0, 0.04);
         }
       }
 
       &[mat-flat-button] {
-        background-color: var(--blue);
-
+        background-color: var(--button-success-bg);
+        color: var(--button-success-text);
+        border: none;
+        cursor: pointer;
         &:hover {
           opacity: 0.9;
         }
@@ -62,7 +59,6 @@
     .table-actions {
       flex-direction: column;
       gap: 16px;
-
       button {
         width: 100%;
       }
@@ -82,26 +78,28 @@
   }
 
   .mat-mdc-header-row {
-    background-color: var(--blue);
+    background-color: var(--table-header-bg);
+    color: var(--table-header-text);
     font-weight: bold;
+    font-size: large;
   }
 
   .mat-mdc-table {
     width: 100%;
     margin-top: 1rem;
-    border: 1px solid black;
-    background-color: white;
+    border: 1px solid var(--table-border);
+    background-color: var(--table-bg);
   }
 
   .mat-mdc-cell {
     padding: 8px;
     vertical-align: middle;
+    color: var(--text-primary);
   }
 
   .mat-column-image {
     width: 80px;
     padding: 8px;
-
     img {
       object-fit: contain;
       border-radius: 4px;
@@ -114,7 +112,7 @@
   }
 
   .order-summary {
-    background: white;
+    background: var(--summary-bg);
     padding: 24px;
     border-radius: 8px;
     height: fit-content;
@@ -123,6 +121,7 @@
       margin: 0 0 20px 0;
       font-size: 20px;
       font-weight: 500;
+      color: var(--text-primary);
     }
 
     .summary-details {
@@ -131,11 +130,12 @@
         justify-content: space-between;
         margin-bottom: 16px;
         font-size: 16px;
+        color: var(--text-primary);
 
         &.total {
           margin-top: 24px;
           padding-top: 16px;
-          border-top: 1px solid #e0e0e0;
+          border-top: 1px solid var(--summary-border);
           font-weight: bold;
           font-size: 18px;
         }
@@ -154,7 +154,6 @@
   .table-actions {
     flex-direction: column;
     gap: 16px;
-
     button {
       width: 100%;
     }

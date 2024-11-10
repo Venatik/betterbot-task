@@ -1,0 +1,77 @@
+:root {
+  --box-shadow: 0 0px 15px #142232, 0 0px 15px black;
+  --black: #101e2c;
+  --black-two: #182a3d;
+  --light-blue: #89c4ff;
+  --blue: #0080ff;
+  --dark-blue: #004589;
+  --darker-blue: #001e3b;
+
+  // Light theme
+  --background: #ffffff;
+  --card-bg: #f5f5f5;
+  --text-primary: var(--black);
+  --text-secondary: var(--black-two);
+  --header-bg: var(--blue);
+  --header-text: var(--light-blue);
+  --header-active: #ffffff;
+
+  // Form elements
+  --input-bg: #ffffff;
+  --input-border: var(--blue);
+  --input-border-hover: var(--dark-blue);
+  --input-text: var(--black);
+  --input-placeholder: #cccccc;
+
+  // Table
+  --table-header-bg: var(--blue);
+  --table-header-text: #ffffff;
+  --table-bg: #ffffff;
+  --table-border: var(--black);
+
+  // Buttons
+  --button-primary-bg: var(--blue);
+  --button-primary-text: #ffffff;
+  --button-success-bg: lightgreen;
+  --button-success-text: #ffffff;
+  --button-rating-bg: green;
+
+  // Summary card
+  --summary-bg: #ffffff;
+  --summary-border: #e0e0e0;
+}
+
+.dark-theme {
+  --background: var(--black);
+  --card-bg: var(--black-two);
+  --text-primary: var(--light-blue);
+  --text-secondary: #ffffff;
+  --header-bg: var(--darker-blue);
+  --header-text: var(--light-blue);
+  --header-active: #ffffff;
+  --box-shadow: 0 0px 15px var(--darker-blue), 0 0px 15px black;
+
+  // Form elements
+  --input-bg: var(--black-two);
+  --input-border: var(--dark-blue);
+  --input-border-hover: var(--light-blue);
+  --input-text: var(--light-blue);
+  --input-placeholder: var(--dark-blue);
+
+  // Table
+  --table-header-bg: var(--darker-blue);
+  --table-header-text: var(--light-blue);
+  --table-bg: var(--black-two);
+  --table-border: var(--dark-blue);
+
+  // Buttons
+  --button-primary-bg: var(--dark-blue);
+  --button-primary-text: var(--light-blue);
+  --button-success-bg: var(--dark-blue);
+  --button-success-text: var(--light-blue);
+  --button-rating-bg: var(--darker-blue);
+
+  // Summary card
+  --summary-bg: var(--black-two);
+  --summary-border: var(--dark-blue);
+}

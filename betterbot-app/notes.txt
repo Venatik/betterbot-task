@@ -1,10 +1,11 @@
 TO DO:
 - Collapsible top menu
 - Generate discount for each item
+- Add Spinner
 
 
 TO FIX:
-- CSS on buttons in Cart
+
 
 
 NOTES:

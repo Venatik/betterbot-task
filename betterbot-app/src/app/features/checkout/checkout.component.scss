@@ -2,16 +2,17 @@
   padding: 20px;
   max-width: 800px;
   margin: 0 auto;
-  background-color: white;
+  background-color: var(--card-bg);
   border-radius: 5px;
 
   h2 {
     margin-bottom: 24px;
+    color: var(--text-primary);
   }
 
   h3 {
     margin-bottom: 24px;
-    color: gray;
+    color: var(--text-secondary);
   }
 }
 
@@ -28,7 +29,7 @@
 
     label {
       font-weight: 500;
-      color: black;
+      color: var(--text-primary);
       min-width: 150px;
       text-align: left;
     }
@@ -43,14 +44,14 @@
       max-width: 600px;
       height: 56px;
       padding: 0 16px;
-      border: 1px solid var(--blue);
+      border: 1px solid var(--input-border);
       border-radius: 4px;
-      background-color: white;
+      background-color: var(--input-bg);
       font-size: 16px;
-      color: black;
+      color: var(--text-primary);
 
       &:disabled {
-        background-color: gray;
+        background-color: var(--text-secondary);
         cursor: not-allowed;
       }
 
@@ -77,14 +78,14 @@
 
   button:first-child {
     border: none;
-    color: gray;
+    color: var(--text-secondary);
   }
 
   button:last-child {
-    background-color: lightgreen;
+    background-color: var(--button-success-bg);
     padding: 5px;
     border-radius: 5px;
-    color: white;
+    color: var(--button-success-text);
     width: 200px;
   }
 }
@@ -95,6 +96,7 @@
       height: 65px;
       border-radius: 5px;
       overflow: hidden;
+      background-color: var(--input-bg);
     }
 
     .mat-mdc-form-field-flex {
@@ -105,7 +107,7 @@
 
     input::placeholder,
     textarea::placeholder {
-      color: #cccccc !important;
+      color: var(--input-placeholder) !important;
     }
 
     .mdc-notched-outline__leading,
@@ -127,6 +129,14 @@
       height: 100%;
       display: flex;
       align-items: center;
+    }
+
+    .mat-mdc-input-element {
+      color: var(--text-primary) !important;
+    }
+
+    .mat-mdc-form-field-label {
+      color: var(--text-secondary) !important;
     }
   }
 }
