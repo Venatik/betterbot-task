@@ -20,6 +20,9 @@ export class CartComponent {
 
   cartItems = this.cartService.getCartItems();
   displayedColumns: string[] = ["image", "name", "price", "delete"];
+  isCartEmpty = computed(() => {
+    return this.cartItems().length === 0;
+  });
 
   subtotal = computed(() => {
     return this.calculateTotal(this.cartItems());

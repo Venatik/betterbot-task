@@ -29,6 +29,14 @@
 
             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
             <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+            <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="4">
+                    <div class="empty-cart-message">
+                        Your cart is empty. Add some items to proceed to checkout.
+                    </div>
+                </td>
+            </tr>
         </mat-table>
 
         <div class="table-actions">
@@ -36,7 +44,8 @@
                 <mat-icon>arrow_back</mat-icon>
                 Continue Shopping
             </button>
-            <button mat-flat-button color="primary" routerLink="/checkout">
+            <button mat-flat-button color="primary" [routerLink]="!isCartEmpty() ? '/checkout' : null"
+                [disabled]="isCartEmpty()">
                 <mat-icon>shopping_cart</mat-icon>
                 Checkout
             </button>

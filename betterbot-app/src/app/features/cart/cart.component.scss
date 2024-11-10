@@ -7,6 +7,19 @@
   .table-container {
     display: flex;
     flex-direction: column;
+
+    .empty-cart-message {
+      padding: 20px;
+      text-align: center;
+      color: var(--text-secondary);
+    }
+
+    .table-actions {
+      button[disabled] {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+    }
   }
 
   .table-actions {

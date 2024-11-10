@@ -12,10 +12,26 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatInputModule } from "@angular/material/input";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { finalize } from "rxjs";
+import {
+  animate,
+  query,
+  stagger,
+  style,
+  transition,
+  trigger,
+} from "@angular/animations";
 
 @Component({
   selector: "app-products",
   standalone: true,
+  animations: [
+    trigger("staggerFade", [
+      transition(":enter", [
+        style({ opacity: 0 }),
+        animate("500ms", style({ opacity: 1 })),
+      ]),
+    ]),
+  ],
   imports: [
     ProductComponent,
     MatGridListModule,
