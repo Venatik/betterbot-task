@@ -1,33 +1,43 @@
 <header class="header">
   <nav class="nav">
-
-    <div>
-      BetterBot Shop
+    <div class="logo-section">
+      <div class="full-logo" [class.hidden]="isSmallScreen()" routerLink="/" routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }">BetterBot Shop</div>
+      <div class="icon-logo" [class.hidden]="!isSmallScreen()" routerLink="/" routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"><mat-icon>smart_toy</mat-icon></div>
     </div>
 
-    <div class="nav-links">
-      <div class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{
-      exact: true,
-    }">
+    <div class="nav-links" [class.hidden]="isSmallScreen()">
+      <div class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
         Home
       </div>
-      <div class="nav-link" routerLink="/cart" routerLinkActive="active" [routerLinkActiveOptions]="{
-      exact: true,
-    }">
+      <div class="nav-link" routerLink="/cart" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
         Cart
       </div>
     </div>
 
-
-
     <div class="nav-icons">
       <mat-icon aria-hidden="false" (click)="toggleTheme()"
         [matTooltip]="darkMode() ? 'Switch to Light Mode' : 'Switch to Dark Mode'" class="theme-icon">
-        {{ !darkMode() ? 'dark_mode' : 'light_mode' }}
+        {{ darkMode() ? 'light_mode' : 'dark_mode' }}
       </mat-icon>
       <mat-icon aria-hidden="false">email</mat-icon>
       <mat-icon aria-hidden="false">login</mat-icon>
       <mat-icon aria-hidden="false">settings</mat-icon>
+      <button mat-icon-button [class.hidden]="!isSmallScreen()" (click)="toggleMenu()" class="menu-button">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+
+    <div class="mobile-menu" [class.show]="showMenu() && isSmallScreen()">
+      <div class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+        (click)="toggleMenu()">
+        Home
+      </div>
+      <div class="nav-link" routerLink="/cart" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+        (click)="toggleMenu()">
+        Cart
+      </div>
     </div>
   </nav>
 </header>
