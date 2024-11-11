@@ -27,3 +27,12 @@ html {
   font-family: "Open Sans", sans-serif;
   font-weight: 600;
 }
+
+.mat-mdc-dialog-container {
+  --mdc-dialog-container-color: var(--card-bg);
+
+  .mdc-dialog__surface {
+    background-color: var(--card-bg) !important;
+    color: var(--text-primary);
+  }
+}

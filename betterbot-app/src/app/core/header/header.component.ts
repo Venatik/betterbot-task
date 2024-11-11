@@ -1,4 +1,4 @@
-import { Component, inject, signal } from "@angular/core";
+import { Component, computed, inject, signal } from "@angular/core";
 import { MatIconModule } from "@angular/material/icon";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { RouterLink, RouterLinkActive } from "@angular/router";
@@ -7,6 +7,8 @@ import { MatButtonModule } from "@angular/material/button";
 import { CommonModule } from "@angular/common";
 import { fromEvent } from "rxjs";
 import { debounceTime } from "rxjs/operators";
+import { CartService } from "../services/cart.service";
+import { MatBadgeModule } from "@angular/material/badge";
 
 @Component({
   selector: "app-header",
@@ -18,19 +20,24 @@ import { debounceTime } from "rxjs/operators";
     MatIconModule,
     MatTooltipModule,
     MatButtonModule,
+    MatBadgeModule,
   ],
   templateUrl: "./header.component.html",
   styleUrl: "./header.component.scss",
 })
 export class HeaderComponent {
   private themeService = inject(ThemeService);
+  private cartService = inject(CartService);
   darkMode = this.themeService.isDarkMode();
+  cartItemCount = computed(() => {
+    const items = this.cartService.getCartItems();
+    return items.length;
+  });
 
   showMenu = signal(false);
   isSmallScreen = signal(false);
 
   constructor() {
-    // Listen for window resize
     if (typeof window !== "undefined") {
       this.checkScreenSize();
       fromEvent(window, "resize")

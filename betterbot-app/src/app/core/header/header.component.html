@@ -11,7 +11,11 @@
       <div class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
         Home
       </div>
-      <div class="nav-link" routerLink="/cart" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      <div class="nav-link" routerLink="/cart" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+        [matTooltip]="cartItemCount() > 0 ? cartItemCount() + ' items in cart' : 'Cart is empty'">
+        <mat-icon matBadge="{{cartItemCount()}}" [matBadgeHidden]="cartItemCount() === 0" matBadgeColor="accent">
+          shopping_cart
+        </mat-icon>
         Cart
       </div>
     </div>

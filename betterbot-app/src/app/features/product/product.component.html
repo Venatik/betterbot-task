@@ -14,6 +14,7 @@
                 </button>
                 <p class="price">{{ product.price | currency: 'USD' : 'symbol': '1.0-0' }}</p>
             </mat-card-content>
+            <button mat-flat-button (click)="showDetails()">View Details</button>
             <button mat-flat-button (click)="onAddToCart()">Add to Cart</button>
         </mat-card>
     </div>

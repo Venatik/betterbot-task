@@ -20,6 +20,6 @@ export class CartService {
   }
 
   getCartItems() {
-    return this.cartItems;
+    return this.cartItems();
   }
 }

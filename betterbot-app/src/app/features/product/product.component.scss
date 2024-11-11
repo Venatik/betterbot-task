@@ -78,7 +78,6 @@
     transition: transform 0.2s ease, box-shadow 0.2 ease;
     &:hover {
       transform: scale(1.05);
-      box-shadow: var(--box-shadow);
     }
   }
 

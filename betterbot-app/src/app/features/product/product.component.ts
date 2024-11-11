@@ -3,7 +3,6 @@ import {
   EventEmitter,
   inject,
   Input,
-  input,
   Output,
   signal,
 } from "@angular/core";
@@ -14,6 +13,8 @@ import { MatCardModule } from "@angular/material/card";
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
 import { MatBadgeModule } from "@angular/material/badge";
+import { ProductDetailsComponent } from "../product-details/product-details.component";
+import { MatDialog, MatDialogModule } from "@angular/material/dialog";
 
 @Component({
   selector: "app-product",
@@ -25,6 +26,7 @@ import { MatBadgeModule } from "@angular/material/badge";
     MatButtonModule,
     MatIconModule,
     MatBadgeModule,
+    MatDialogModule,
   ],
   templateUrl: "./product.component.html",
   styleUrl: "./product.component.scss",
@@ -36,6 +38,7 @@ export class ProductComponent {
   @Output() addToCart = new EventEmitter<Product>();
 
   private productsService = inject(ProductsService);
+  private dialog = inject(MatDialog);
 
   ngOnInit() {
     this.getProducts();
@@ -54,5 +57,12 @@ export class ProductComponent {
 
   onAddToCart() {
     this.addToCart.emit(this.product);
+  }
+
+  showDetails() {
+    this.dialog.open(ProductDetailsComponent, {
+      data: this.product,
+      width: "500px",
+    });
   }
 }
