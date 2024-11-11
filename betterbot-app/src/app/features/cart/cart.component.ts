@@ -1,4 +1,4 @@
-import { Component, inject, signal } from "@angular/core";
+import { Component, effect, inject, signal } from "@angular/core";
 import { MatTableModule } from "@angular/material/table";
 import { CartService } from "../../core/services/cart.service";
 import { CurrencyPipe } from "@angular/common";
@@ -17,6 +17,12 @@ import { computed } from "@angular/core"; // Add this import
 export class CartComponent {
   private cartService = inject(CartService);
   private readonly TAX_RATE = 0.125;
+
+  constructor() {
+    effect(() => {
+      this.cartItems.set(this.cartService.getCartItems());
+    });
+  }
 
   cartItems = signal(this.cartService.getCartItems());
   displayedColumns: string[] = ["image", "name", "price", "delete"];
@@ -48,5 +54,6 @@ export class CartComponent {
 
   removeItem(item: Product) {
     this.cartService.removeFromCart(item);
+    this.cartItems.set(this.cartService.getCartItems());
   }
 }
