@@ -2,9 +2,6 @@ TO DO:
 - Collapsible top menu?
 - Generate discount for each item?
 - Add paginator?
-- Cart icon with number of items
-- Item preview popup
-
 
 TO FIX:
 
