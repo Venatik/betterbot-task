@@ -1,11 +1,11 @@
-import { Component, effect, inject, signal } from "@angular/core";
+import { Component, inject } from "@angular/core";
 import { MatTableModule } from "@angular/material/table";
 import { CartService } from "../../core/services/cart.service";
 import { CurrencyPipe } from "@angular/common";
 import { Product } from "../../types/product.interface";
 import { MatIconModule } from "@angular/material/icon";
 import { RouterLink } from "@angular/router";
-import { computed } from "@angular/core"; // Add this import
+import { computed } from "@angular/core";
 
 @Component({
   selector: "app-cart",
@@ -18,14 +18,9 @@ export class CartComponent {
   private cartService = inject(CartService);
   private readonly TAX_RATE = 0.125;
 
-  constructor() {
-    effect(() => {
-      this.cartItems.set(this.cartService.getCartItems());
-    });
-  }
-
-  cartItems = signal(this.cartService.getCartItems());
+  cartItems = computed(() => this.cartService.getCartItems());
   displayedColumns: string[] = ["image", "name", "price", "delete"];
+
   isCartEmpty = computed(() => {
     return this.cartItems().length === 0;
   });
@@ -54,6 +49,5 @@ export class CartComponent {
 
   removeItem(item: Product) {
     this.cartService.removeFromCart(item);
-    this.cartItems.set(this.cartService.getCartItems());
   }
 }
