@@ -6,6 +6,7 @@ import { Product } from "../../types/product.interface";
 import { MatIconModule } from "@angular/material/icon";
 import { RouterLink } from "@angular/router";
 import { computed } from "@angular/core";
+import { CartItem } from "../../types/cart-item.interface";
 
 @Component({
   selector: "app-cart",
@@ -47,7 +48,7 @@ export class CartComponent {
     return subtotal + tax;
   }
 
-  removeItem(item: Product) {
+  removeItem(item: Product & { cartId: number }) {
     this.cartService.removeFromCart(item);
   }
 }
