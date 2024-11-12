@@ -17,5 +17,9 @@
             <mat-icon class="star-icon">star</mat-icon>
             {{ data.rating.rate }} ({{ data.rating.count }} Reviews)
         </p>
+        <button mat-flat-button color="primary" (click)="onAddToCart()">
+            <mat-icon>add_shopping_cart</mat-icon>
+            Add to Cart
+        </button>
     </div>
 </div>

@@ -2,7 +2,7 @@
     <div class="products-grid">
         <mat-card class="product-card">
             <div class="image-container">
-                <img mat-card-image [src]="product.image" [alt]="product.title">
+                <img mat-card-image [src]="product.image" [alt]="product.title" (click)="showDetails()">
             </div>
             <mat-card-header>
                 <mat-card-title>{{ product.title }}</mat-card-title>
@@ -14,8 +14,6 @@
                 </button>
                 <p class="price">{{ product.price | currency: 'USD' : 'symbol': '1.0-0' }}</p>
             </mat-card-content>
-            <button mat-flat-button (click)="showDetails()">View Details</button>
-            <button mat-flat-button (click)="onAddToCart()">Add to Cart</button>
         </mat-card>
     </div>
 </div>

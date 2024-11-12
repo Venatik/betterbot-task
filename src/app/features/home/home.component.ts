@@ -1,4 +1,4 @@
-import { Component, inject, Input, signal } from "@angular/core";
+import { Component, inject, signal, effect } from "@angular/core";
 import { Product } from "../../types/product.interface";
 import { ProductsService } from "../../core/services/products.service";
 import { ProductComponent } from "../product/product.component";
@@ -6,18 +6,10 @@ import { MatGridListModule } from "@angular/material/grid-list";
 import { CartService } from "../../core/services/cart.service";
 import { CommonModule } from "@angular/common";
 import { MatFormFieldModule } from "@angular/material/form-field";
-import { FormControl, FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { FormsModule } from "@angular/forms";
 import { MatSelectModule } from "@angular/material/select";
-import { MatIconModule } from "@angular/material/icon";
-import { MatInputModule } from "@angular/material/input";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
-import {
-  catchError,
-  debounceTime,
-  distinctUntilChanged,
-  EMPTY,
-  finalize,
-} from "rxjs";
+import { catchError, EMPTY, finalize } from "rxjs";
 import { animate, style, transition, trigger } from "@angular/animations";
 import { FilterService } from "../../core/services/filter.service";
 import { CapitalizePipe } from "../../shared/pipes/capitalize.pipe";
@@ -38,10 +30,7 @@ import { CapitalizePipe } from "../../shared/pipes/capitalize.pipe";
     MatGridListModule,
     CommonModule,
     MatFormFieldModule,
-    ReactiveFormsModule,
     MatSelectModule,
-    MatIconModule,
-    MatInputModule,
     FormsModule,
     MatProgressSpinnerModule,
     CapitalizePipe,
@@ -58,30 +47,29 @@ export class HomeComponent {
   products = signal<Product[]>([]);
   filteredProducts = signal<Product[]>([]);
   categories = signal<string[]>([]);
-
-  searchControl: FormControl = new FormControl(
-    this.filterService.getSearchFilter()()
-  );
-
   selectedCategory: string = this.filterService.getCategoryFilter()() || "";
+
+  constructor() {
+    effect(
+      () => {
+        const searchTerm = this.filterService.getSearchFilter()();
+        const categoryFilter = this.filterService.getCategoryFilter()();
+        if (this.products().length > 0) {
+          const filtered = this.getFilteredProducts(searchTerm, categoryFilter);
+          this.filteredProducts.set(filtered);
+        }
+      },
+      { allowSignalWrites: true }
+    );
+  }
 
   ngOnInit() {
     this.initializeData();
-    this.setupSearchListener();
   }
 
   private initializeData() {
     this.getProducts();
     this.getCategories();
-  }
-
-  private setupSearchListener() {
-    this.searchControl.valueChanges
-      .pipe(debounceTime(300), distinctUntilChanged())
-      .subscribe(value => {
-        this.filterService.setSearchFilter(value || "");
-        this.filterProducts();
-      });
   }
 
   onCategoryChange(value: string) {
@@ -124,8 +112,11 @@ export class HomeComponent {
       });
   }
 
-  filterProducts() {
-    const searchTerm = this.searchControl.value?.toLowerCase() || "";
+  private getFilteredProducts(
+    searchTerm: string,
+    categoryFilter: string
+  ): Product[] {
+    searchTerm = searchTerm.toLowerCase();
     let filtered = this.products();
 
     if (searchTerm) {
@@ -136,12 +127,22 @@ export class HomeComponent {
       );
     }
 
-    if (this.selectedCategory) {
+    if (categoryFilter) {
       filtered = filtered.filter(
-        product => product.category === this.selectedCategory
+        product => product.category === categoryFilter
       );
     }
 
+    return filtered;
+  }
+
+  filterProducts() {
+    const searchTerm =
+      this.filterService.getSearchFilter()()?.toLowerCase() || "";
+    const filtered = this.getFilteredProducts(
+      searchTerm,
+      this.selectedCategory
+    );
     this.filteredProducts.set(filtered);
   }
 

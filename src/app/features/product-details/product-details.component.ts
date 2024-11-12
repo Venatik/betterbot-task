@@ -9,6 +9,7 @@ import {
 } from "@angular/material/dialog";
 import { CapitalizePipe } from "../../shared/pipes/capitalize.pipe";
 import { CurrencyPipe } from "@angular/common";
+import { CartService } from "../../core/services/cart.service";
 
 @Component({
   selector: "app-product-details",
@@ -24,6 +25,8 @@ import { CurrencyPipe } from "@angular/common";
   styleUrl: "./product-details.component.scss",
 })
 export class ProductDetailsComponent {
+  private cartService = inject(CartService);
+
   constructor(
     public dialogRef: MatDialogRef<ProductDetailsComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Product
@@ -31,5 +34,9 @@ export class ProductDetailsComponent {
 
   close() {
     this.dialogRef.close();
+  }
+
+  onAddToCart() {
+    this.cartService.addToCart(this.data);
   }
 }
