@@ -148,9 +148,19 @@
         padding: 24px;
         height: fit-content;
 
+        span {
+          display: block;
+          font-size: 16px;
+          font-weight: bold;
+          color: black;
+          margin-bottom: 16px;
+          margin-left: 20px;
+        }
+
         .card-image {
           margin-bottom: 20px;
           display: flex;
+          flex-direction: column;
           justify-content: center;
 
           .visa-card {

@@ -14,7 +14,7 @@
         </div>
 
         <div class="form-field">
-            <label>Email</label>
+            <label>Email Address</label>
             <mat-form-field appearance="outline">
                 <input matInput [(ngModel)]="formData.email" name="email" required email #email="ngModel"
                     placeholder="Enter your email">
@@ -85,13 +85,13 @@
             </mat-form-field>
         </div>
     </form>
+</div>
 
-    <div class="checkout-buttons">
-        <button mat-stroked-button routerLink="/cart">
-            <mat-icon>arrow_back</mat-icon> Back to Shopping Cart
-        </button>
-        <button mat-raised-button (click)="checkoutForm.ngSubmit.emit()">
-            <mat-icon>local_shipping</mat-icon> Proceed to Shipping
-        </button>
-    </div>
+<div class="checkout-buttons">
+    <button mat-stroked-button routerLink="/cart">
+        <mat-icon>arrow_back</mat-icon> Back to Shopping Cart
+    </button>
+    <button mat-raised-button (click)="checkoutForm.ngSubmit.emit()">
+        <mat-icon>local_shipping</mat-icon> Proceed to Shipping
+    </button>
 </div>
