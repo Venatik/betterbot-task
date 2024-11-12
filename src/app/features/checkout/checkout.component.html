@@ -1,16 +1,15 @@
 <div class="checkout-container">
     <h2>Shipping Information</h2>
     <h3>Please fill out all the information below</h3>
-
     <form #checkoutForm="ngForm" (ngSubmit)="onSubmit()" class="checkout-form">
         <div class="form-field">
             <label>Name</label>
             <mat-form-field appearance="outline">
                 <input matInput [(ngModel)]="formData.name" name="name" required #name="ngModel"
                     placeholder="Enter your name">
-                <mat-error *ngIf="name.invalid && (name.dirty || name.touched)">
-                    Name is required
-                </mat-error>
+                @if (name.invalid && (name.dirty || name.touched)) {
+                <mat-error>Name is required</mat-error>
+                }
             </mat-form-field>
         </div>
 
@@ -19,9 +18,11 @@
             <mat-form-field appearance="outline">
                 <input matInput [(ngModel)]="formData.email" name="email" required email #email="ngModel"
                     placeholder="Enter your email">
-                <mat-error *ngIf="email.invalid && (email.dirty || email.touched)">
+                @if (email.invalid && (email.dirty || email.touched)) {
+                <mat-error>
                     {{email.errors?.['required'] ? 'Email is required' : 'Please enter a valid email'}}
                 </mat-error>
+                }
             </mat-form-field>
         </div>
 
@@ -30,9 +31,9 @@
             <mat-form-field appearance="outline">
                 <input matInput [(ngModel)]="formData.phone" name="phone" required #phone="ngModel"
                     placeholder="Enter your phone number">
-                <mat-error *ngIf="phone.invalid && (phone.dirty || phone.touched)">
-                    Phone number is required
-                </mat-error>
+                @if (phone.invalid && (phone.dirty || phone.touched)) {
+                <mat-error>Phone number is required</mat-error>
+                }
             </mat-form-field>
         </div>
 
@@ -41,9 +42,9 @@
             <mat-form-field appearance="outline">
                 <input matInput [(ngModel)]="formData.address" name="address" required #address="ngModel"
                     placeholder="Enter your address">
-                <mat-error *ngIf="address.invalid && (address.dirty || address.touched)">
-                    Address is required
-                </mat-error>
+                @if (address.invalid && (address.dirty || address.touched)) {
+                <mat-error>Address is required</mat-error>
+                }
             </mat-form-field>
         </div>
 
@@ -56,9 +57,9 @@
                 <option [value]="country">{{country}}</option>
                 }
             </select>
-            <div class="error-message" *ngIf="country.invalid && (country.dirty || country.touched)">
-                Country is required
-            </div>
+            @if (country.invalid && (country.dirty || country.touched)) {
+            <div class="error-message">Country is required</div>
+            }
         </div>
 
         <div class="form-field">
@@ -70,9 +71,9 @@
                 <option [value]="state">{{state}}</option>
                 }
             </select>
-            <div class="error-message" *ngIf="state.invalid && (state.dirty || state.touched) && stateDropdownEnabled">
-                State is required
-            </div>
+            @if (state.invalid && (state.dirty || state.touched) && stateDropdownEnabled) {
+            <div class="error-message">State is required</div>
+            }
         </div>
 
         <div class="form-field">
@@ -83,20 +84,14 @@
           </textarea>
             </mat-form-field>
         </div>
-
     </form>
 
     <div class="checkout-buttons">
         <button mat-stroked-button routerLink="/cart">
-            <mat-icon>arrow_back</mat-icon>
-            Back to Shopping Cart
+            <mat-icon>arrow_back</mat-icon> Back to Shopping Cart
         </button>
-
         <button mat-raised-button (click)="checkoutForm.ngSubmit.emit()">
-            <mat-icon>local_shipping</mat-icon>
-            Proceed to Shipping
+            <mat-icon>local_shipping</mat-icon> Proceed to Shipping
         </button>
     </div>
-
-
 </div>

@@ -20,7 +20,6 @@ export class ProductsService {
 
   getCategories(): Observable<string[]> {
     return this.http.get<string[]>(`${API_URL}/products/categories`).pipe(
-      tap(categories => console.log("Categories received:", categories)),
       catchError(error => {
         console.error("Error fetching categories:", error);
         return throwError(() => error);

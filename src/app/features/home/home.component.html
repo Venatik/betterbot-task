@@ -7,15 +7,19 @@
 
         <select [(ngModel)]="selectedCategory" (ngModelChange)="onCategoryChange($event)" class="category-select">
             <option value="">All Categories</option>
-            <option *ngFor="let category of categories()" [value]="category">
+            @for (category of categories(); track category) {
+            <option [value]="category">
                 {{category | capitalize}}
             </option>
+            }
         </select>
     </div>
 
-    <div class="spinner-container" *ngIf="loading()">
+    @if (loading()) {
+    <div class="spinner-container">
         <mat-spinner></mat-spinner>
     </div>
+    }
 
     <div class="products-grid" @staggerFade>
         @for (product of filteredProducts(); track product.id) {
