@@ -19,7 +19,6 @@ export class ProductsService {
   }
 
   getCategories(): Observable<string[]> {
-    console.log("Fetching categories...");
     return this.http.get<string[]>(`${API_URL}/products/categories`).pipe(
       tap(categories => console.log("Categories received:", categories)),
       catchError(error => {

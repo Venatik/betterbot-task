@@ -32,28 +32,10 @@ import { MatDialog, MatDialogModule } from "@angular/material/dialog";
   styleUrl: "./product.component.scss",
 })
 export class ProductComponent {
-  products = signal<Product[]>([]);
-  discount: number = 0;
   @Input() product!: Product;
   @Output() addToCart = new EventEmitter<Product>();
 
-  private productsService = inject(ProductsService);
   private dialog = inject(MatDialog);
-
-  ngOnInit() {
-    this.getProducts();
-  }
-
-  getProducts() {
-    this.productsService.getAllProducts().subscribe({
-      next: value => {
-        this.products.set(value);
-      },
-      error: err => {
-        console.log(err);
-      },
-    });
-  }
 
   onAddToCart() {
     this.addToCart.emit(this.product);

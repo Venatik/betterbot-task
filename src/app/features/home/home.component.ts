@@ -11,7 +11,13 @@ import { MatSelectModule } from "@angular/material/select";
 import { MatIconModule } from "@angular/material/icon";
 import { MatInputModule } from "@angular/material/input";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
-import { finalize } from "rxjs";
+import {
+  catchError,
+  debounceTime,
+  distinctUntilChanged,
+  EMPTY,
+  finalize,
+} from "rxjs";
 import { animate, style, transition, trigger } from "@angular/animations";
 import { FilterService } from "../../core/services/filter.service";
 import { CapitalizePipe } from "../../shared/pipes/capitalize.pipe";
@@ -56,16 +62,26 @@ export class HomeComponent {
   searchControl: FormControl = new FormControl(
     this.filterService.getSearchFilter()()
   );
+
   selectedCategory: string = this.filterService.getCategoryFilter()() || "";
 
   ngOnInit() {
+    this.initializeData();
+    this.setupSearchListener();
+  }
+
+  private initializeData() {
     this.getProducts();
     this.getCategories();
+  }
 
-    this.searchControl.valueChanges.subscribe(value => {
-      this.filterService.setSearchFilter(value || "");
-      this.filterProducts();
-    });
+  private setupSearchListener() {
+    this.searchControl.valueChanges
+      .pipe(debounceTime(300), distinctUntilChanged())
+      .subscribe(value => {
+        this.filterService.setSearchFilter(value || "");
+        this.filterProducts();
+      });
   }
 
   onCategoryChange(value: string) {
@@ -78,28 +94,34 @@ export class HomeComponent {
     this.loading.set(true);
     this.productsService
       .getAllProducts()
-      .pipe(finalize(() => this.loading.set(false)))
+      .pipe(
+        finalize(() => this.loading.set(false)),
+        catchError(err => {
+          console.error("Error loading products:", err);
+          return EMPTY;
+        })
+      )
       .subscribe({
         next: value => {
           this.products.set(value);
           this.filteredProducts.set(value);
           this.filterProducts();
         },
-        error: err => {
-          console.log(err);
-        },
       });
   }
 
   getCategories() {
-    this.productsService.getCategories().subscribe({
-      next: categories => {
-        this.categories.set(categories);
-      },
-      error: err => {
-        console.log("Error loading categories", err);
-      },
-    });
+    this.productsService
+      .getCategories()
+      .pipe(
+        catchError(err => {
+          console.error("Error loading categories:", err);
+          return EMPTY;
+        })
+      )
+      .subscribe({
+        next: categories => this.categories.set(categories),
+      });
   }
 
   filterProducts() {

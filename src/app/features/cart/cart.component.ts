@@ -6,7 +6,6 @@ import { Product } from "../../types/product.interface";
 import { MatIconModule } from "@angular/material/icon";
 import { RouterLink } from "@angular/router";
 import { computed } from "@angular/core";
-import { CartItem } from "../../types/cart-item.interface";
 
 @Component({
   selector: "app-cart",
