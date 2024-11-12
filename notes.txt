@@ -4,5 +4,17 @@ TO DO:
 - Add paginator?
 
 TO FIX:
+- Search and Category move to navbar
+- Match design to screenshot (navbar)
+- Move add to cart to dialog
+- Shorten titles on product card
 
 NOTES:
+
+1. Move the search bar from Home to Header.
+
+2. Adjust the header to take up the whole width of the window. Mobile menu remains the same.
+
+3. Move the Add to Cart button to the Dialog window. Remove View Details button and have the product picture be clickable.
+
+4. Shorten the titles on the product cards. Some titles are too long and interfere with the design.
