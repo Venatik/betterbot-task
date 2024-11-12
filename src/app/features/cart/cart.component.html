@@ -1,79 +1,84 @@
 <div class="cart-container">
-    <div class="table-container">
-        <mat-table [dataSource]="cartItems()">
-            <ng-container matColumnDef="image">
-                <mat-header-cell *matHeaderCellDef>Product</mat-header-cell>
-                <mat-cell *matCellDef="let item">
-                    <img [src]="item.image" [alt]="item.title" style="max-height: 50px; max-width: 50px;">
-                </mat-cell>
-            </ng-container>
+    <div class="content-wrapper">
+        <span class="cart-header">CART</span>
+        <div class="content-grid">
+            <div class="table-container">
+                <mat-table [dataSource]="cartItems()">
+                    <ng-container matColumnDef="image">
+                        <mat-header-cell *matHeaderCellDef>Product</mat-header-cell>
+                        <mat-cell *matCellDef="let item">
+                            <img [src]="item.image" [alt]="item.title" style="max-height: 50px; max-width: 50px;">
+                        </mat-cell>
+                    </ng-container>
 
-            <ng-container matColumnDef="name">
-                <mat-header-cell *matHeaderCellDef>Product Desc.</mat-header-cell>
-                <mat-cell *matCellDef="let item">{{item.title}}</mat-cell>
-            </ng-container>
+                    <ng-container matColumnDef="name">
+                        <mat-header-cell *matHeaderCellDef>Product Desc.</mat-header-cell>
+                        <mat-cell *matCellDef="let item">{{item.title}}</mat-cell>
+                    </ng-container>
 
-            <ng-container matColumnDef="price">
-                <mat-header-cell *matHeaderCellDef>Price</mat-header-cell>
-                <mat-cell *matCellDef="let item">{{item.price | currency:'USD':'symbol':'1.0-2'}}</mat-cell>
-            </ng-container>
+                    <ng-container matColumnDef="price">
+                        <mat-header-cell *matHeaderCellDef>Price</mat-header-cell>
+                        <mat-cell *matCellDef="let item">{{item.price | currency:'USD':'symbol':'1.0-2'}}</mat-cell>
+                    </ng-container>
 
-            <ng-container matColumnDef="delete">
-                <mat-header-cell *matHeaderCellDef></mat-header-cell>
-                <mat-cell *matCellDef="let item">
-                    <button mat-icon-button (click)="removeItem(item)">
-                        <mat-icon>delete</mat-icon>
+                    <ng-container matColumnDef="delete">
+                        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                        <mat-cell *matCellDef="let item">
+                            <button mat-icon-button (click)="removeItem(item)">
+                                <mat-icon>delete</mat-icon>
+                            </button>
+                        </mat-cell>
+                    </ng-container>
+
+                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                    <tr class="mat-row" *matNoDataRow>
+                        <td class="mat-cell" colspan="4">
+                            <div class="empty-cart-message">
+                                Your cart is empty. Add some items to proceed to checkout.
+                            </div>
+                        </td>
+                    </tr>
+                </mat-table>
+
+                <div class="table-actions">
+                    <button mat-stroked-button color="primary" routerLink="/">
+                        <mat-icon>arrow_back</mat-icon>
+                        Continue Shopping
                     </button>
-                </mat-cell>
-            </ng-container>
+                    <button mat-flat-button color="primary" [routerLink]="!isCartEmpty() ? '/checkout' : null"
+                        [disabled]="isCartEmpty()">
+                        <mat-icon>shopping_cart</mat-icon>
+                        Checkout
+                    </button>
+                </div>
+            </div>
 
-            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-
-            <tr class="mat-row" *matNoDataRow>
-                <td class="mat-cell" colspan="4">
-                    <div class="empty-cart-message">
-                        Your cart is empty. Add some items to proceed to checkout.
+            <div class="order-summary">
+                <div class="card-image">
+                    <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/visa-card-design-template-02d9cc23173cf0e4d50dbbdf7aae1c04_screen.jpg?ts=1718906512"
+                        alt="Visa Card" class="visa-card">
+                </div>
+                <h2>Order Summary</h2>
+                <div class="summary-details">
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span>{{calculateTotal(cartItems()) | currency:'USD':'symbol':'1.0-2'}}</span>
                     </div>
-                </td>
-            </tr>
-        </mat-table>
-
-        <div class="table-actions">
-            <button mat-stroked-button color="primary" routerLink="/">
-                <mat-icon>arrow_back</mat-icon>
-                Continue Shopping
-            </button>
-            <button mat-flat-button color="primary" [routerLink]="!isCartEmpty() ? '/checkout' : null"
-                [disabled]="isCartEmpty()">
-                <mat-icon>shopping_cart</mat-icon>
-                Checkout
-            </button>
-        </div>
-    </div>
-
-    <div class="order-summary">
-        <div class="card-image">
-            <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/visa-card-design-template-02d9cc23173cf0e4d50dbbdf7aae1c04_screen.jpg?ts=1718906512"
-                alt="Visa Card" class="visa-card">
-        </div>
-        <h2>Order Summary</h2>
-        <div class="summary-details">
-            <div class="summary-row">
-                <span>Subtotal</span>
-                <span>{{calculateTotal(cartItems()) | currency:'USD':'symbol':'1.0-2'}}</span>
-            </div>
-            <div class="summary-row">
-                <span>Tax (12.5%)</span>
-                <span>{{tax() | currency:'USD':'symbol':'1.0-2'}}</span>
-            </div>
-            <div class="summary-row">
-                <span>Shipping</span>
-                <span>Free</span>
-            </div>
-            <div class="summary-row total">
-                <span>Total</span>
-                <span>{{calculateTotalWithTax(cartItems()) | currency:'USD':'symbol':'1.0-2'}}</span>
+                    <div class="summary-row">
+                        <span>Tax (12.5%)</span>
+                        <span>{{tax() | currency:'USD':'symbol':'1.0-2'}}</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Shipping</span>
+                        <span>Free</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total</span>
+                        <span>{{calculateTotalWithTax(cartItems()) | currency:'USD':'symbol':'1.0-2'}}</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+</div>

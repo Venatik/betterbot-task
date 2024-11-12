@@ -1,169 +1,188 @@
 .cart-container {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 24px;
-  padding: 20px;
-
-  .table-container {
-    display: flex;
-    flex-direction: column;
-
-    .empty-cart-message {
-      padding: 20px;
-      text-align: center;
-      color: var(--text-secondary);
-    }
-
-    .table-actions {
-      button[disabled] {
-        opacity: 0.6;
-        cursor: not-allowed;
-      }
-    }
-  }
-
-  .table-actions {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
-    border-top: 1px solid var(--text-primary);
-    margin-top: 16px;
-
-    button {
-      min-width: 200px;
-      height: 40px;
-      font-weight: 500;
-      letter-spacing: 0.5px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      line-height: 1;
-      border-radius: 10px;
-
-      mat-icon {
-        font-size: 20px;
-        margin-right: 8px;
-        height: 20px;
-        width: 20px;
-        line-height: 20px;
-      }
-
-      &[mat-stroked-button] {
-        border: none;
-        cursor: pointer;
-        mat-icon {
-          color: var(--blue);
-        }
-      }
-
-      &[mat-flat-button] {
-        background-color: var(--button-success-bg);
-        color: var(--button-success-text);
-        border: none;
-        cursor: pointer;
-        &:hover {
-          opacity: 0.9;
-        }
-      }
-    }
-  }
-
-  @media (max-width: 600px) {
-    .table-actions {
-      flex-direction: column;
-      gap: 16px;
-      button {
-        width: 100%;
-      }
-    }
-  }
-
-  .mat-column-price .mat-mdc-footer-cell {
-    text-align: left;
-  }
-
-  .mat-column-name .mat-mdc-footer-cell {
-    text-align: right;
-  }
-
-  .mat-column-price .mat-mdc-footer-cell {
-    text-align: left;
-  }
-
-  .mat-mdc-header-row {
-    background-color: var(--table-header-bg);
-    color: var(--table-header-text);
-    font-weight: bold;
-    font-size: large;
-  }
-
-  .mat-mdc-table {
-    width: 100%;
-    margin-top: 1rem;
-    border: 1px solid var(--table-border);
-    background-color: var(--table-bg);
-  }
-
-  .mat-mdc-cell {
-    padding: 8px;
-    vertical-align: middle;
-    color: var(--text-primary);
-  }
-
-  .mat-column-image {
-    width: 80px;
-    padding: 8px;
-    img {
-      object-fit: contain;
-      border-radius: 4px;
-    }
-  }
-
-  .mat-column-price {
-    text-align: right;
-    padding-right: 16px;
-  }
-
-  .order-summary {
-    background: var(--summary-bg);
-    padding: 24px;
+  .content-wrapper {
+    background-color: #f5f5f5;
     border-radius: 8px;
-    height: fit-content;
+    padding: 24px;
 
-    .card-image {
-      margin-bottom: 20px;
-      display: flex;
-      justify-content: center;
-
-      .visa-card {
-        width: 500px;
-        height: auto;
-        border-radius: 10px;
-        box-shadow: var(--box-shadow);
-      }
-    }
-
-    h2 {
-      margin: 0 0 20px 0;
-      font-size: 20px;
+    .cart-header {
+      display: block;
+      margin-bottom: 24px;
+      font-size: 18px;
       font-weight: 500;
-      color: var(--text-primary);
+      color: rgba(0, 0, 0, 0.87);
     }
 
-    .summary-details {
-      .summary-row {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 16px;
-        font-size: 16px;
-        color: var(--text-primary);
+    .content-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 24px;
 
-        &.total {
-          margin-top: 24px;
-          padding-top: 16px;
-          border-top: 1px solid var(--summary-border);
-          font-weight: bold;
-          font-size: 18px;
+      .table-container {
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+
+        .empty-cart-message {
+          padding: 20px;
+          text-align: center;
+          color: var(--text-secondary);
+        }
+
+        .mat-mdc-table {
+          width: 100%;
+          background-color: white;
+
+          .mat-mdc-header-row {
+            background-color: #f5f5f5;
+            width: 99%;
+            margin: 0 auto;
+            border-radius: 4px;
+
+            .mat-mdc-header-cell {
+              color: rgba(0, 0, 0, 0.87);
+              font-weight: 500;
+              font-size: 14px;
+              padding: 16px;
+            }
+          }
+
+          .mat-mdc-row {
+            border-bottom: 1px solid #f5f5f5;
+
+            &:hover {
+              background-color: rgba(0, 0, 0, 0.02);
+            }
+          }
+
+          .mat-mdc-cell,
+          .mat-mdc-header-cell {
+            border-bottom: 1px solid #f5f5f5;
+            padding: 16px;
+          }
+
+          .mat-mdc-header-row .mat-mdc-header-cell {
+            border-bottom: none;
+          }
+        }
+
+        .mat-column-image {
+          width: 80px;
+          padding: 8px;
+
+          img {
+            object-fit: contain;
+            border-radius: 4px;
+          }
+        }
+
+        .mat-column-price {
+          text-align: right;
+          padding-right: 16px;
+        }
+
+        .table-actions {
+          display: flex;
+          justify-content: space-between;
+          padding: 20px;
+          border-top: 1px solid #f5f5f5;
+          margin-top: 16px;
+
+          button {
+            min-width: 200px;
+            height: 40px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+            border-radius: 10px;
+
+            &[disabled] {
+              opacity: 0.6;
+              cursor: not-allowed;
+            }
+
+            mat-icon {
+              font-size: 20px;
+              margin-right: 8px;
+              height: 20px;
+              width: 20px;
+              line-height: 20px;
+            }
+
+            &[mat-stroked-button] {
+              border: none;
+              cursor: pointer;
+              background-color: #666666;
+              color: white;
+
+              mat-icon {
+                color: white;
+              }
+
+              &:hover {
+                background-color: #555555;
+              }
+            }
+
+            &[mat-flat-button] {
+              background-color: var(--button-success-bg);
+              color: var(--button-success-text);
+              border: none;
+              cursor: pointer;
+
+              &:hover {
+                opacity: 0.9;
+              }
+            }
+          }
+        }
+      }
+
+      .order-summary {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        padding: 24px;
+        height: fit-content;
+
+        .card-image {
+          margin-bottom: 20px;
+          display: flex;
+          justify-content: center;
+
+          .visa-card {
+            width: 500px;
+            height: auto;
+            border-radius: 10px;
+          }
+        }
+
+        h2 {
+          margin: 0 0 20px 0;
+          font-size: 20px;
+          font-weight: 500;
+          color: var(--text-primary);
+        }
+
+        .summary-details {
+          .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 16px;
+            font-size: 16px;
+            color: var(--text-primary);
+
+            &.total {
+              margin-top: 24px;
+              padding-top: 16px;
+              border-top: 1px solid var(--summary-border);
+              font-weight: bold;
+              font-size: 18px;
+            }
+          }
         }
       }
     }
@@ -172,16 +191,29 @@
 
 @media (max-width: 768px) {
   .cart-container {
-    grid-template-columns: 1fr;
+    .content-wrapper {
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+    }
   }
 }
 
 @media (max-width: 600px) {
-  .table-actions {
-    flex-direction: column;
-    gap: 16px;
-    button {
-      width: 100%;
+  .cart-container {
+    .content-wrapper {
+      .content-grid {
+        .table-container {
+          .table-actions {
+            flex-direction: column;
+            gap: 16px;
+
+            button {
+              width: 100%;
+            }
+          }
+        }
+      }
     }
   }
 }
