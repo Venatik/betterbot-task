@@ -1,9 +1,0 @@
-TO DO:
-- Collapsible top menu?
-- Generate discount for each item?
-- Add paginator?
-
-TO FIX:
-- Checkout > Cart empties cart
-
-NOTES:

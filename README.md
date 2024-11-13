@@ -74,9 +74,11 @@ Filtered products state for search and category filtering.
 
 ## Components
 
-- ProductsComponent - the main container for product display and filtering.
+- HomeComponent - the main container for product display and filtering.
 
-- ProductComponent - displays individual product details.
+- ProductComponent - displays individual product details. Discount is randomly calculated between 5% and 15% since the API does not provide discount data.
+
+- ProductDetailsComponent - displays detailed product information and enables add to cart functionality.
 
 - CartComponent - manages shopping cart display and calculations.
 
@@ -88,13 +90,15 @@ Filtered products state for search and category filtering.
 
 - CartService - manages cart state and operations using signals.
 
+- ThemeService - unused, but intended to provide light/dark theme toggling.
+
+- FilterService - manages product filtering state.
+
 ## Contact
 
 - For any questions or feedback, please contact me at: stefan.trajkovski008@gmail.com
 
 ## Bonus Features
 
-- Light/Dark mode toggle
 - Loading spinner (network throttle to see it in action)
 - Persistent search and category filter
-- Collapsible navigation menu and logo
