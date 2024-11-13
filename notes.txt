@@ -4,9 +4,7 @@ TO DO:
 - Add paginator?
 
 TO FIX:
-- Checkout input fields (outline)
 - Search bar consistency
-- Breadcrumbs on checkout need to be higher
 - Discount badge
 
 NOTES:

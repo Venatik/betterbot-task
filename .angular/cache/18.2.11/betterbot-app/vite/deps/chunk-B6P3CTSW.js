@@ -7,15 +7,12 @@ import {
   style,
   ɵPRE_STYLE
 } from "./chunk-JNJMT4IC.js";
-import "./chunk-GWAU3GAC.js";
 import {
   Injectable,
   RuntimeError,
   setClassMetadata,
   ɵɵdefineInjectable
 } from "./chunk-ADJ6LL3Q.js";
-import "./chunk-LBBSG2YE.js";
-import "./chunk-WSXI74FV.js";
 import {
   __objRest,
   __spreadValues
@@ -3994,28 +3991,29 @@ var AnimationRendererFactory = class {
     return this.engine.whenRenderingDone();
   }
 };
+
 export {
-  AnimationDriver,
+  getParentElement,
+  validateStyleProperty,
+  validateWebAnimatableStyleProperty,
+  containsElement,
+  invokeQuery,
   NoopAnimationDriver,
-  Animation as ɵAnimation,
-  AnimationEngine as ɵAnimationEngine,
-  AnimationRenderer as ɵAnimationRenderer,
-  AnimationRendererFactory as ɵAnimationRendererFactory,
-  AnimationStyleNormalizer as ɵAnimationStyleNormalizer,
-  BaseAnimationRenderer as ɵBaseAnimationRenderer,
-  NoopAnimationStyleNormalizer as ɵNoopAnimationStyleNormalizer,
-  WebAnimationsDriver as ɵWebAnimationsDriver,
-  WebAnimationsPlayer as ɵWebAnimationsPlayer,
-  WebAnimationsStyleNormalizer as ɵWebAnimationsStyleNormalizer,
-  allowPreviousPlayerStylesMerge as ɵallowPreviousPlayerStylesMerge,
-  camelCaseToDashCase as ɵcamelCaseToDashCase,
-  containsElement as ɵcontainsElement,
-  createEngine as ɵcreateEngine,
-  getParentElement as ɵgetParentElement,
-  invokeQuery as ɵinvokeQuery,
-  normalizeKeyframes as ɵnormalizeKeyframes,
-  validateStyleProperty as ɵvalidateStyleProperty,
-  validateWebAnimatableStyleProperty as ɵvalidateWebAnimatableStyleProperty
+  AnimationDriver,
+  AnimationStyleNormalizer,
+  NoopAnimationStyleNormalizer,
+  normalizeKeyframes,
+  camelCaseToDashCase,
+  allowPreviousPlayerStylesMerge,
+  WebAnimationsStyleNormalizer,
+  AnimationEngine,
+  WebAnimationsPlayer,
+  WebAnimationsDriver,
+  createEngine,
+  Animation,
+  BaseAnimationRenderer,
+  AnimationRenderer,
+  AnimationRendererFactory
 };
 /*! Bundled license information:
 
@@ -4026,4 +4024,4 @@ export {
    * License: MIT
    *)
 */
-//# sourceMappingURL=browser-V4ZSHK5R.js.map
+//# sourceMappingURL=chunk-B6P3CTSW.js.map

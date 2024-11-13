@@ -3,6 +3,9 @@
         <mat-card class="product-card">
             <div class="image-container">
                 <img mat-card-image [src]="product.image" [alt]="product.title" (click)="showDetails()">
+                <div class="discount-badge">
+                    -{{discount}}%
+                </div>
             </div>
             <mat-card-header>
                 <mat-card-title>{{ product.title }}</mat-card-title>

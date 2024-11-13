@@ -26,7 +26,12 @@ import { inject } from "@angular/core";
 })
 export class ProductComponent {
   @Input() product!: Product;
+  discount: number;
   private dialog = inject(MatDialog);
+
+  constructor() {
+    this.discount = Math.floor(Math.random() * 11) + 5;
+  }
 
   showDetails() {
     this.dialog.open(ProductDetailsComponent, {

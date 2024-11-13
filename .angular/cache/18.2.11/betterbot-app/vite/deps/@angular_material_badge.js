@@ -35,8 +35,8 @@ import {
   ɵɵdefineNgModule,
   ɵɵdirectiveInject
 } from "./chunk-ADJ6LL3Q.js";
-import "./chunk-LBBSG2YE.js";
 import "./chunk-WSXI74FV.js";
+import "./chunk-LBBSG2YE.js";
 import "./chunk-NGNUV6BG.js";
 
 // node_modules/@angular/material/fesm2022/badge.mjs
