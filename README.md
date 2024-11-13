@@ -90,8 +90,6 @@ Filtered products state for search and category filtering.
 
 - CartService - manages cart state and operations using signals.
 
-- ThemeService - unused, but intended to provide light/dark theme toggling.
-
 - FilterService - manages product filtering state.
 
 ## Contact
