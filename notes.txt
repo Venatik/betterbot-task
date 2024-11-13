@@ -4,5 +4,6 @@ TO DO:
 - Add paginator?
 
 TO FIX:
+- Checkout > Cart empties cart
 
 NOTES:

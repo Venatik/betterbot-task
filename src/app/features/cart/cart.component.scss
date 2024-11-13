@@ -155,14 +155,10 @@
             }
 
             &[mat-flat-button] {
-              background-color: var(--button-success-bg);
-              color: var(--button-success-text);
+              background-color: green;
+              color: white;
               border: none;
               cursor: pointer;
-
-              &:hover {
-                opacity: 0.9;
-              }
             }
           }
         }
