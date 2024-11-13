@@ -84,15 +84,53 @@
         ::ng-deep {
           .mat-mdc-form-field-wrapper {
             padding-bottom: 0;
+            height: 40px;
+            overflow: visible;
+          }
+
+          .mat-mdc-input-element {
+            width: 192px !important;
+            height: 24px !important;
+            position: static !important;
+            top: 0 !important;
+            left: 0 !important;
+            transform: none !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            text-indent: 0;
+            padding-left: 0;
           }
 
           .mat-mdc-text-field-wrapper {
             border-radius: 20px;
             background-color: #f5f5f5;
+            height: 48px !important;
+          }
+
+          .mdc-notched-outline {
+            height: 48px !important;
           }
 
           .mat-mdc-form-field-flex {
             padding: 0 16px;
+            height: 48px !important;
+            align-items: center !important;
+            justify-content: flex-start !important;
+          }
+
+          .mat-mdc-form-field-infix {
+            padding: 0 !important;
+            width: auto !important;
+            min-width: 192px !important;
+            position: static !important;
+            display: flex;
+            align-items: center;
+            height: 100%;
+          }
+
+          .mat-mdc-form-field-icon-prefix {
+            position: static !important;
+            padding-right: 0 !important;
           }
 
           .mdc-notched-outline__leading,
@@ -159,11 +197,11 @@
     .mobile-menu {
       position: absolute;
       top: 64px;
-      left: 0; // Changed from right to left
+      left: 0;
       background-color: white;
       width: 250px;
       border-radius: 0 0 4px 4px;
-      transform: translateX(-100%); // Changed from translateY
+      transform: translateX(-100%);
       opacity: 0;
       transition: all 0.3s ease;
       visibility: hidden;
@@ -171,7 +209,7 @@
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
       &.show {
-        transform: translateX(0); // Changed from translateY
+        transform: translateX(0);
         opacity: 1;
         visibility: visible;
         display: block;
