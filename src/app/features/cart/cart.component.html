@@ -1,6 +1,11 @@
 <div class="cart-container">
     <div class="content-wrapper">
         <span class="cart-header">CART</span>
+        <div class="breadcrumbs">
+            <a routerLink="/">BetterBotShop</a>
+            <span class="separator"></span>
+            <span class="current">Cart</span>
+        </div>
         <div class="content-grid">
             <div class="table-container">
                 <mat-table [dataSource]="cartItems()">

@@ -3,13 +3,44 @@
     background-color: #f5f5f5;
     border-radius: 8px;
     padding: 24px;
+    position: relative;
 
     .cart-header {
-      display: block;
+      display: inline-block;
       margin-bottom: 24px;
       font-size: 18px;
       font-weight: 500;
       color: rgba(0, 0, 0, 0.87);
+    }
+
+    .breadcrumbs {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+
+      a {
+        color: #8c8c8c;
+        text-decoration: none;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+      .separator {
+        &::after {
+          content: "/";
+          color: black;
+          margin: 0 8px;
+        }
+      }
+
+      .current {
+        color: #8c8c8c;
+      }
     }
 
     .content-grid {
@@ -49,10 +80,6 @@
 
           .mat-mdc-row {
             border-bottom: 1px solid #f5f5f5;
-
-            &:hover {
-              background-color: rgba(0, 0, 0, 0.02);
-            }
           }
 
           .mat-mdc-cell,

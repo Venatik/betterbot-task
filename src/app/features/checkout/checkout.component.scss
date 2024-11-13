@@ -1,124 +1,180 @@
 .checkout-container {
-  padding: 20px;
-  width: 98%;
-  margin: 0 auto;
-  background-color: var(--card-bg);
-  border-radius: 5px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  padding: 24px;
+  position: relative;
 
-  h2 {
-    margin-bottom: 24px;
-    color: var(--text-primary);
+  ::ng-deep {
+    .mat-mdc-form-field {
+      .mat-mdc-text-field-wrapper {
+        height: 65px;
+        border-radius: 20px;
+        overflow: visible;
+        background-color: var(--input-bg);
+      }
+
+      .mat-mdc-form-field-flex {
+        padding: 0 12px;
+        height: 100%;
+        align-items: center;
+      }
+
+      input::placeholder,
+      textarea::placeholder {
+        color: var(--input-placeholder) !important;
+      }
+
+      .mat-mdc-form-field-infix {
+        padding: 0;
+        height: 100%;
+        display: flex;
+        align-items: center;
+      }
+
+      .mat-mdc-input-element {
+        color: var(--text-primary) !important;
+      }
+
+      .mat-mdc-form-field-label {
+        color: var(--text-secondary) !important;
+      }
+
+      .mdc-notched-outline__leading,
+      .mdc-notched-outline__notch,
+      .mdc-notched-outline__trailing {
+        border-color: rgba(0, 0, 0, 0.08) !important;
+        border-width: 1px !important;
+      }
+
+      .mdc-notched-outline__leading {
+        border-radius: 20px 0 0 20px !important;
+      }
+
+      .mdc-notched-outline__trailing {
+        border-radius: 0 20px 20px 0 !important;
+      }
+    }
   }
 
-  h3 {
-    margin-bottom: 24px;
-    color: #4b4848b6;
-  }
-}
-
-.checkout-form {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-
-  .form-field {
+  .breadcrumbs {
+    position: absolute;
+    top: 32px;
+    right: 24px;
     display: flex;
-    flex-direction: row;
     align-items: center;
-    gap: 100px;
-    width: 100%;
+    gap: 8px;
+    font-size: 14px;
 
-    label {
-      font-weight: 500;
-      color: var(--text-primary);
-      min-width: 150px;
-      text-align: left;
-    }
-
-    mat-form-field {
-      flex: 1;
-      width: 100%;
-    }
-
-    .form-select {
-      flex: 1;
-      height: 56px;
-      padding: 0 16px;
-      border: 1px solid #f5f5f5;
-      border-radius: 4px;
-      background-color: var(--input-bg);
-      font-size: 16px;
-      color: var(--text-primary);
-
-      &:disabled {
-        background-color: var(--text-secondary);
-        cursor: not-allowed;
-      }
-
-      &:focus {
-        outline: none;
+    a {
+      color: #8c8c8c;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
       }
     }
 
-    .error-message {
-      color: red;
-      font-size: 12px;
-      margin-top: 4px;
-      margin-left: 166px;
-    }
-  }
-}
-
-.checkout-buttons {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 24px;
-
-  button:first-child {
-    border: none;
-    color: var(--text-secondary);
-    margin-left: 25px;
-  }
-
-  button:last-child {
-    background-color: var(--button-success-bg);
-    padding: 5px;
-    border-radius: 5px;
-    color: var(--button-success-text);
-    width: 200px;
-    margin-right: 25px;
-  }
-}
-
-::ng-deep {
-  .mat-mdc-form-field {
-    .mat-mdc-text-field-wrapper {
-      height: 65px;
-      border-radius: 5px;
-      overflow: hidden;
-      background-color: var(--input-bg);
+    .separator {
+      &::after {
+        content: "/";
+        color: black;
+        margin: 0 8px;
+      }
     }
 
-    .mat-mdc-form-field-flex {
-      padding: 0 12px;
-      height: 100%;
-      align-items: center;
+    .current {
+      color: #8c8c8c;
+    }
+  }
+
+  .checkout-content {
+    margin-top: 48px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 24px;
+
+    h2 {
+      margin-bottom: 24px;
+      color: var(--text-primary);
     }
 
-    .mat-mdc-form-field-infix {
-      padding: 0;
-      height: 100%;
+    h3 {
+      margin-bottom: 24px;
+      color: #4b4848b6;
+    }
+
+    .checkout-form {
       display: flex;
-      align-items: center;
-    }
+      flex-direction: column;
+      gap: 16px;
 
-    .mat-mdc-input-element {
-      color: var(--text-primary) !important;
-    }
+      .form-field {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 32px;
+        width: 100%;
 
-    .mat-mdc-form-field-label {
-      color: var(--text-secondary) !important;
+        label {
+          font-weight: 500;
+          color: var(--text-primary);
+          min-width: 150px;
+          text-align: left;
+        }
+
+        mat-form-field {
+          flex: 1;
+          width: 100%;
+        }
+
+        .form-select {
+          flex: 1;
+          width: 100%;
+          height: 56px;
+          padding: 0 16px;
+          border: 1px solid #f5f5f5;
+          border-radius: 4px;
+          background-color: var(--input-bg);
+          font-size: 16px;
+          color: var(--text-primary);
+
+          &:disabled {
+            background-color: var(--text-secondary);
+            cursor: not-allowed;
+          }
+
+          &:focus {
+            outline: none;
+          }
+        }
+
+        .error-message {
+          color: red;
+          font-size: 12px;
+          margin-top: 4px;
+          margin-left: 182px;
+        }
+      }
+
+      .checkout-buttons {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 24px;
+
+        button:first-child {
+          border: none;
+          color: var(--text-secondary);
+        }
+
+        button:last-child {
+          background-color: var(--button-success-bg);
+          padding: 5px;
+          border-radius: 5px;
+          color: var(--button-success-text);
+          width: 200px;
+        }
+      }
     }
   }
 }
@@ -126,32 +182,29 @@
 @media (max-width: 600px) {
   .checkout-container {
     padding: 16px;
-  }
 
-  .checkout-form {
-    .form-field {
-      flex-direction: column;
-      align-items: flex-start;
+    .checkout-content {
+      .checkout-form {
+        .form-field {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 16px;
 
-      label {
-        min-width: unset;
-        text-align: left;
+          label {
+            min-width: unset;
+          }
+
+          mat-form-field,
+          .form-select {
+            width: 100%;
+            max-width: none;
+          }
+
+          .error-message {
+            margin-left: 0;
+          }
+        }
       }
-
-      mat-form-field,
-      .form-select {
-        width: 100%;
-        max-width: none;
-      }
-
-      .error-message {
-        margin-left: 0;
-      }
-    }
-
-    button {
-      margin-left: 0;
-      width: 100%;
     }
   }
 }

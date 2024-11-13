@@ -1,97 +1,106 @@
 <div class="checkout-container">
-    <h2>Shipping Information</h2>
-    <h3>Please fill out all the information below</h3>
-    <form #checkoutForm="ngForm" (ngSubmit)="onSubmit()" class="checkout-form">
-        <div class="form-field">
-            <label>Name</label>
-            <mat-form-field appearance="outline">
-                <input matInput [(ngModel)]="formData.name" name="name" required #name="ngModel"
-                    placeholder="Enter your name">
-                @if (name.invalid && (name.dirty || name.touched)) {
-                <mat-error>Name is required</mat-error>
+    <div class="breadcrumbs">
+        <a routerLink="/">BetterBotShop</a>
+        <span class="separator"></span>
+        <span class="current">Checkout</span>
+    </div>
+    <div class="checkout-content">
+        <h2>Shipping Information</h2>
+        <h3>Please fill out all the information below</h3>
+        <form #checkoutForm="ngForm" (ngSubmit)="onSubmit()" class="checkout-form">
+            <div class="form-field">
+                <label>Name</label>
+                <mat-form-field appearance="outline">
+                    <input matInput [(ngModel)]="formData.name" name="name" required #name="ngModel"
+                        placeholder="Enter your name">
+                    @if (name.invalid && (name.dirty || name.touched)) {
+                    <mat-error>Name is required</mat-error>
+                    }
+                </mat-form-field>
+            </div>
+
+            <div class="form-field">
+                <label>Email Address</label>
+                <mat-form-field appearance="outline">
+                    <input matInput [(ngModel)]="formData.email" name="email" required email #email="ngModel"
+                        placeholder="Enter your email">
+                    @if (email.invalid && (email.dirty || email.touched)) {
+                    <mat-error>
+                        {{email.errors?.['required'] ? 'Email is required' : 'Please enter a valid email'}}
+                    </mat-error>
+                    }
+                </mat-form-field>
+            </div>
+
+            <div class="form-field">
+                <label>Phone</label>
+                <mat-form-field appearance="outline">
+                    <input matInput [(ngModel)]="formData.phone" name="phone" required #phone="ngModel"
+                        placeholder="Enter your phone number">
+                    @if (phone.invalid && (phone.dirty || phone.touched)) {
+                    <mat-error>Phone number is required</mat-error>
+                    }
+                </mat-form-field>
+            </div>
+
+            <div class="form-field">
+                <label>Address</label>
+                <mat-form-field appearance="outline">
+                    <input matInput [(ngModel)]="formData.address" name="address" required #address="ngModel"
+                        placeholder="Enter your address">
+                    @if (address.invalid && (address.dirty || address.touched)) {
+                    <mat-error>Address is required</mat-error>
+                    }
+                </mat-form-field>
+            </div>
+
+            <div class="form-field">
+                <label>Country</label>
+                <select [(ngModel)]="formData.country" name="country" required (change)="onCountryChange()"
+                    #country="ngModel" class="form-select">
+                    <option value="">Select Country</option>
+                    @for (country of countries; track country) {
+                    <option [value]="country">{{country}}</option>
+                    }
+                </select>
+                @if (country.invalid && (country.dirty || country.touched)) {
+                <div class="error-message">Country is required</div>
                 }
-            </mat-form-field>
-        </div>
+            </div>
 
-        <div class="form-field">
-            <label>Email Address</label>
-            <mat-form-field appearance="outline">
-                <input matInput [(ngModel)]="formData.email" name="email" required email #email="ngModel"
-                    placeholder="Enter your email">
-                @if (email.invalid && (email.dirty || email.touched)) {
-                <mat-error>
-                    {{email.errors?.['required'] ? 'Email is required' : 'Please enter a valid email'}}
-                </mat-error>
+            <div class="form-field">
+                <label>State/Province</label>
+                <select [(ngModel)]="formData.state" name="state" required #state="ngModel" class="form-select"
+                    [disabled]="!stateDropdownEnabled">
+                    <option value="">Select State</option>
+                    @for (state of availableStates; track state) {
+                    <option [value]="state">{{state}}</option>
+                    }
+                </select>
+                @if (state.invalid && (state.dirty || state.touched) && stateDropdownEnabled) {
+                <div class="error-message">State is required</div>
                 }
-            </mat-form-field>
-        </div>
+            </div>
 
-        <div class="form-field">
-            <label>Phone</label>
-            <mat-form-field appearance="outline">
-                <input matInput [(ngModel)]="formData.phone" name="phone" required #phone="ngModel"
-                    placeholder="Enter your phone number">
-                @if (phone.invalid && (phone.dirty || phone.touched)) {
-                <mat-error>Phone number is required</mat-error>
-                }
-            </mat-form-field>
-        </div>
+            <div class="form-field">
+                <label>Order Notes</label>
+                <mat-form-field appearance="outline">
+                    <textarea matInput [(ngModel)]="formData.notes" name="notes" #notes="ngModel"
+                        placeholder="Optional Notes">
+            </textarea>
+                </mat-form-field>
+            </div>
 
-        <div class="form-field">
-            <label>Address</label>
-            <mat-form-field appearance="outline">
-                <input matInput [(ngModel)]="formData.address" name="address" required #address="ngModel"
-                    placeholder="Enter your address">
-                @if (address.invalid && (address.dirty || address.touched)) {
-                <mat-error>Address is required</mat-error>
-                }
-            </mat-form-field>
-        </div>
-
-        <div class="form-field">
-            <label>Country</label>
-            <select [(ngModel)]="formData.country" name="country" required (change)="onCountryChange()"
-                #country="ngModel" class="form-select">
-                <option value="">Select Country</option>
-                @for (country of countries; track country) {
-                <option [value]="country">{{country}}</option>
-                }
-            </select>
-            @if (country.invalid && (country.dirty || country.touched)) {
-            <div class="error-message">Country is required</div>
-            }
-        </div>
-
-        <div class="form-field">
-            <label>State/Province</label>
-            <select [(ngModel)]="formData.state" name="state" required #state="ngModel" class="form-select"
-                [disabled]="!stateDropdownEnabled">
-                <option value="">Select State</option>
-                @for (state of availableStates; track state) {
-                <option [value]="state">{{state}}</option>
-                }
-            </select>
-            @if (state.invalid && (state.dirty || state.touched) && stateDropdownEnabled) {
-            <div class="error-message">State is required</div>
-            }
-        </div>
-
-        <div class="form-field">
-            <label>Order Notes</label>
-            <mat-form-field appearance="outline">
-                <textarea matInput [(ngModel)]="formData.notes" name="notes" #notes="ngModel"
-                    placeholder="Optional Notes">
-          </textarea>
-            </mat-form-field>
-        </div>
-    </form>
-</div>
-
-<div class="checkout-buttons">
-    <button mat-stroked-button routerLink="/cart">
-        <mat-icon>arrow_back</mat-icon> Back to Shopping Cart
-    </button>
-    <button mat-raised-button (click)="checkoutForm.ngSubmit.emit()">
-        <mat-icon>local_shipping</mat-icon> Proceed to Shipping
-    </button>
+            <div class="checkout-buttons">
+                <button mat-stroked-button routerLink="/cart">
+                    <mat-icon>arrow_back</mat-icon>
+                    Back to Shopping Cart
+                </button>
+                <button mat-raised-button (click)="checkoutForm.ngSubmit.emit()">
+                    <mat-icon>local_shipping</mat-icon>
+                    Proceed to Shipping
+                </button>
+            </div>
+        </form>
+    </div>
 </div>

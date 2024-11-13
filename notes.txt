@@ -4,9 +4,215 @@ TO DO:
 - Add paginator?
 
 TO FIX:
-- Search and Category move to navbar
-- Match design to screenshot (navbar)
-- Move add to cart to dialog
-- Shorten titles on product card
+- Checkout input fields (outline)
+- Search bar consistency
+- Breadcrumbs on checkout need to be higher
+- Discount badge
 
 NOTES:
+
+.header {
+  background-color: white;
+  padding: 0 20px;
+  height: 64px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+  .nav {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    padding: 12px 24px;
+    gap: 16px;
+
+    .menu-button {
+      color: #333;
+
+      &:hover {
+        color: #2196f3;
+      }
+
+      mat-icon {
+        font-size: 24px;
+      }
+    }
+
+    .logo-section {
+      color: #333;
+      font-size: 1.5rem;
+      font-weight: bold;
+
+      .icon-logo {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+
+        &:hover {
+          color: #2196f3;
+        }
+      }
+    }
+
+    .search-section {
+      flex: 1;
+      max-width: 400px;
+      margin-top: 12px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+
+      .mega-menu {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        cursor: pointer;
+        opacity: 0.6;
+        height: 40px;
+        margin-top: -10px;
+
+        .mega-menu-text {
+          font-size: 14px;
+          white-space: nowrap;
+        }
+
+        mat-icon {
+          font-size: 20px;
+          width: 20px;
+          height: 20px;
+          color: #8c8c8c;
+        }
+      }
+
+      mat-form-field {
+        width: 100%;
+        min-width: 300px;
+        margin-top: -1.25em;
+        flex: 1;
+
+        ::ng-deep {
+          .mat-mdc-form-field-wrapper {
+            padding-bottom: 0;
+          }
+
+          .mat-mdc-text-field-wrapper {
+            border-radius: 20px;
+            background-color: #f5f5f5;
+          }
+
+          .mat-mdc-form-field-flex {
+            padding: 0 16px;
+          }
+
+          .mdc-notched-outline__leading,
+          .mdc-notched-outline__notch,
+          .mdc-notched-outline__trailing {
+            border: none !important;
+          }
+
+          .mat-mdc-form-field-icon-prefix {
+            color: #d8d8d8;
+          }
+
+          .mdc-text-field--outlined {
+            --mdc-outlined-text-field-container-shape: 20px;
+          }
+
+          .mat-mdc-form-field-subscript-wrapper {
+            display: none;
+          }
+        }
+      }
+    }
+
+    .nav-icons {
+      display: flex;
+      gap: 16px;
+      color: #333;
+      align-items: center;
+      margin-left: auto;
+
+      .flag-icon {
+        width: 25px;
+        height: 25px;
+        cursor: pointer;
+        transition: opacity 0.3s;
+        object-fit: contain;
+        vertical-align: middle;
+      }
+
+      .user-section {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        cursor: pointer;
+        color: #8c8c8c;
+
+        img {
+          width: 30px;
+          border-radius: 50px;
+        }
+      }
+
+      mat-icon {
+        cursor: pointer;
+        transition: color 0.3s;
+        color: #8c8c8c;
+
+        &:hover {
+          color: #2196f3;
+        }
+      }
+    }
+
+    .mobile-menu {
+      position: absolute;
+      top: 64px;
+      left: 0; // Changed from right to left
+      background-color: white;
+      width: 250px;
+      border-radius: 0 0 4px 4px;
+      transform: translateX(-100%); // Changed from translateY
+      opacity: 0;
+      transition: all 0.3s ease;
+      visibility: hidden;
+      display: none;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+      &.show {
+        transform: translateX(0); // Changed from translateY
+        opacity: 1;
+        visibility: visible;
+        display: block;
+      }
+
+      .nav-link {
+        color: #333;
+        padding: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        &:hover {
+          background-color: rgba(33, 150, 243, 0.1);
+        }
+
+        &.active {
+          color: #2196f3;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .header .nav {
+    padding: 12px 16px;
+  }
+}

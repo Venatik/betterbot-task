@@ -1,4 +1,11 @@
-import { Component, computed, inject, signal, effect } from "@angular/core";
+import {
+  Component,
+  computed,
+  inject,
+  signal,
+  effect,
+  ViewEncapsulation,
+} from "@angular/core";
 import { MatIconModule } from "@angular/material/icon";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { RouterLink, RouterLinkActive } from "@angular/router";
