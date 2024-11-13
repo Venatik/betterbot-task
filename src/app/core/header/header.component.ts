@@ -9,7 +9,6 @@ import {
 import { MatIconModule } from "@angular/material/icon";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { RouterLink, RouterLinkActive } from "@angular/router";
-import { ThemeService } from "../services/theme.service";
 import { MatButtonModule } from "@angular/material/button";
 import { CommonModule } from "@angular/common";
 import { fromEvent } from "rxjs";
@@ -41,16 +40,8 @@ import { MatInputModule } from "@angular/material/input";
   styleUrl: "./header.component.scss",
 })
 export class HeaderComponent {
-  private themeService = inject(ThemeService);
   private cartService = inject(CartService);
   private filterService = inject(FilterService);
-
-  darkMode = this.themeService.isDarkMode();
-  cartItemCount = computed(() => {
-    const items = this.cartService.getCartItems();
-    return items.length;
-  });
-
   user = "Henry";
 
   showMenu = signal(false);
@@ -84,9 +75,5 @@ export class HeaderComponent {
 
   toggleMenu() {
     this.showMenu.update(value => !value);
-  }
-
-  toggleTheme(): void {
-    this.themeService.toggleTheme();
   }
 }
